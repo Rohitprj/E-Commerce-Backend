@@ -1,10 +1,15 @@
 const mongoose = require("mongoose");
-function connectDB() {
+
+async function connectDB() {
   try {
-    mongoose.connect("mongodb://localhost:27017/E-Commerce");
+    await mongoose.connect("mongodb://localhost:27017/E-CommerceDB", {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
     console.log("DB Connected");
   } catch (e) {
     console.log("Not working", e);
   }
 }
+
 module.exports = { connectDB };
