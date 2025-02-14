@@ -14,9 +14,13 @@ async function createCategory(req, res) {
   try {
     const { name, slug, description, image } = req.body;
 
-    const existingCategory = await Categories.find({ name, slug });
-    if (existingCategory) {
-      return res.status(400).json({ message: "Category already exists" });
+    const existingCategoryName = await Categories.findOne({ name });
+    const existingCategorySlug = await Categories.findOne({ slug });
+    if (existingCategoryName) {
+      return res.status(400).json({ message: "Category name already exists" });
+    }
+    if (existingCategorySlug) {
+      return res.status(400).json({ message: "Category slug already exists" });
     }
 
     const categories = new Categories({ name, slug, description, image });
