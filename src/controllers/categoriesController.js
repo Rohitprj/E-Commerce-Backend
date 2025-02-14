@@ -10,7 +10,7 @@ async function allCategories(req, res) {
   }
 }
 
-async function newCategory(req, res) {
+async function createCategory(req, res) {
   try {
     const { name, slug, description, image } = req.body;
 
@@ -20,10 +20,14 @@ async function newCategory(req, res) {
     }
 
     const categories = new Categories({ name, slug, description, image });
+
     const savedCategories = await categories.save();
     console.log(savedCategories);
+
+    res.status(201).json({ message: "Category created !" });
   } catch (error) {
+    res.status(500).json({ message: "Server error" });
     console.log(error);
   }
 }
-module.exports = { allCategories, newCategory };
+module.exports = { allCategories, createCategory };
