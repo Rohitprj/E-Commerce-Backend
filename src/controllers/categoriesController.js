@@ -1,5 +1,6 @@
 const Categories = require("../models/categoriesSchema");
 
+// get all categories
 async function allCategories(req, res) {
   try {
     const categories = await Categories.find();
@@ -10,6 +11,7 @@ async function allCategories(req, res) {
   }
 }
 
+// create new category
 async function createCategory(req, res) {
   try {
     const { name, description, image } = req.body;
@@ -39,6 +41,7 @@ async function createCategory(req, res) {
   }
 }
 
+// get category by id
 async function getCategoryById(req, res) {
   try {
     const categoryById = await Categories.findById(req.params.id);

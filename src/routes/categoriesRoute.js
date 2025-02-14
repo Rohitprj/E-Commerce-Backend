@@ -9,5 +9,5 @@ const {
 
 router.get("/allCategories", allCategories);
 router.post("/createCategory", createCategory);
-router.get("/getCategoryById", getCategoryById);
+router.get("/getCategoryById/:id", getCategoryById);
 module.exports = router;
