@@ -11,5 +11,5 @@ const {
 router.get("/allCategories", allCategories);
 router.post("/createCategory", createCategory);
 router.get("/getCategoryById/:id", getCategoryById);
-router.patch("updateCategoryById/:id", updateCategoryById);
+router.patch("/updateCategoryById/:id", updateCategoryById);
 module.exports = router;

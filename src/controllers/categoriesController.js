@@ -58,14 +58,23 @@ async function getCategoryById(req, res) {
 async function updateCategoryById(req, res) {
   try {
     const { id } = req.params;
-    const name = req.body;
+    const { name } = req.body;
 
-    const updateCategory = await Categories.findByIdAndUpdate(id, name, {
-      new: true,
-      runValidators: true,
-    });
+    console.log(name, id);
+
+    const updateCategory = await Categories.findByIdAndUpdate(
+      id,
+      { name },
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+
+    console.log("Updated Category: ", updateCategory);
+
     if (!updateCategory) {
-      res.status(404).json({ message: "category not found" });
+      return res.status(404).json({ message: "category not found" });
     }
     res
       .status(200)
