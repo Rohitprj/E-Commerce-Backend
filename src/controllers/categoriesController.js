@@ -42,6 +42,10 @@ async function createCategory(req, res) {
 async function getCategoryById(req, res) {
   try {
     const categoryById = await Categories.findById(req.params.id);
+    if (!categoryById) {
+      return res.status(404).json({ message: "Category not found !" });
+    }
+    res.json({ success: true, categoryById });
   } catch (error) {
     console.log(error);
   }
