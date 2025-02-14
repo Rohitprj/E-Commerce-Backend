@@ -53,4 +53,32 @@ async function getCategoryById(req, res) {
     console.log(error);
   }
 }
-module.exports = { allCategories, createCategory, getCategoryById };
+
+// Update category using patch
+async function updateCategoryById(req, res) {
+  try {
+    const { id } = req.params;
+    const name = req.body;
+
+    const updateCategory = await Categories.findByIdAndUpdate(id, name, {
+      new: true,
+      runValidators: true,
+    });
+    if (!updateCategory) {
+      res.status(404).json({ message: "category not found" });
+    }
+    res
+      .status(200)
+      .json({ message: "category updated!", category: updateCategory });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Server error !" });
+  }
+}
+
+module.exports = {
+  allCategories,
+  createCategory,
+  getCategoryById,
+  updateCategoryById,
+};
