@@ -12,15 +12,19 @@ async function allCategories(req, res) {
 
 async function createCategory(req, res) {
   try {
-    const { name, slug, description, image } = req.body;
+    const { name, description, image } = req.body;
+
+    const slug = name.toLowerCase();
 
     const existingCategoryName = await Categories.findOne({ name });
-    const existingCategorySlug = await Categories.findOne({ slug });
     if (existingCategoryName) {
       return res.status(400).json({ message: "Category name already exists" });
     }
-    if (existingCategorySlug) {
-      return res.status(400).json({ message: "Category slug already exists" });
+    const existingCategoryDes = await Categories.findOne({ description });
+    if (existingCategoryDes) {
+      return res
+        .status(400)
+        .json({ message: "Category description already exists" });
     }
 
     const categories = new Categories({ name, slug, description, image });
@@ -34,4 +38,12 @@ async function createCategory(req, res) {
     console.log(error);
   }
 }
-module.exports = { allCategories, createCategory };
+
+async function getCategoryById(req, res) {
+  try {
+    const categoryById = await Categories.findById(req.params.id);
+  } catch (error) {
+    console.log(error);
+  }
+}
+module.exports = { allCategories, createCategory, getCategoryById };
