@@ -39,18 +39,29 @@ async function logIn(req, res) {
     if (!isMatch) {
       return res.status(400).json({ message: "Invalid credentials" });
     }
-    const jwToken = jwt.sign(
+    const accessToken = jwt.sign(
       { email: registered.email, _id: registered._id },
-      process.env.JWT_SECRET,
-      { expiresIn: "24h" }
+      process.env.ACCESS_TOKEN,
+      { expiresIn: "15m" }
     );
+    const refreshToken = jwt.sign(
+      {
+        email: registered.email,
+        _id: registered._id,
+      },
+      process.env.REFRESH_TOKEN,
+      { expiresIn: "7d" }
+    );
+
+    registered.refreshToken = registered;
+    await registered.save();
 
     res.status(200).json({
       message: "Login successfully",
       success: true,
       _id: registered._id,
       email,
-      jwToken,
+      accessToken,
     });
   } catch (e) {
     res.status(500).json({ message: "Server error" });
