@@ -52,7 +52,7 @@ async function logIn(req, res) {
       process.env.REFRESH_TOKEN,
       { expiresIn: "14d" }
     );
-    // const refToken = new SignUp({ refreshToken });
+
     registered.refreshToken = refreshToken;
     await registered.save();
 
