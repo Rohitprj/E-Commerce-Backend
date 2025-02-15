@@ -42,7 +42,7 @@ async function logIn(req, res) {
     const accessToken = jwt.sign(
       { email: registered.email, _id: registered._id },
       process.env.ACCESS_TOKEN,
-      { expiresIn: "15m" }
+      { expiresIn: "1h" }
     );
     const refreshToken = jwt.sign(
       {
@@ -50,17 +50,15 @@ async function logIn(req, res) {
         _id: registered._id,
       },
       process.env.REFRESH_TOKEN,
-      { expiresIn: "7d" }
+      { expiresIn: "14d" }
     );
     // const refToken = new SignUp({ refreshToken });
-    // registered.refreshToken = registered;
-    // await refToken.save();
+    registered.refreshToken = refreshToken;
+    await registered.save();
 
     res.status(200).json({
       message: "Login successfully",
       success: true,
-      _id: registered._id,
-      email,
       accessToken,
       refreshToken,
     });
