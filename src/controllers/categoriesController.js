@@ -54,13 +54,11 @@ async function getCategoryById(req, res) {
   }
 }
 
-// Update category using patch
+// Update category by id using patch method
 async function updateCategoryById(req, res) {
   try {
     const { id } = req.params;
     const { name } = req.body;
-
-    console.log(name, id);
 
     const updateCategory = await Categories.findByIdAndUpdate(
       id,
@@ -85,9 +83,22 @@ async function updateCategoryById(req, res) {
   }
 }
 
+// Delete category by id using delete method
+async function deleteCategoryById(req, res) {
+  try {
+    const { id } = req.params.id;
+    const deleteCategory = await Category.findByIdAndDelete(id);
+    if (!deleteCategory) {
+      return res.status(404).json({ message: "Category not found!" });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
 module.exports = {
   allCategories,
   createCategory,
   getCategoryById,
   updateCategoryById,
+  deleteCategoryById,
 };
