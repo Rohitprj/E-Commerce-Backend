@@ -87,12 +87,20 @@ async function updateCategoryById(req, res) {
 async function deleteCategoryById(req, res) {
   try {
     const { id } = req.params.id;
-    const deleteCategory = await Category.findByIdAndDelete(id);
+
+    // const deleteCategory = await Categories.findByIdAndDelete(id);
+    const deleteCategory = await Categories.findByIdAndDelete(req.params.id);
+
     if (!deleteCategory) {
       return res.status(404).json({ message: "Category not found!" });
     }
+
+    res
+      .status(200)
+      .json({ success: true, message: "Category deleted successfully" });
   } catch (error) {
     console.log(error);
+    res.status(500).json({ success: false, message: error.message });
   }
 }
 module.exports = {
