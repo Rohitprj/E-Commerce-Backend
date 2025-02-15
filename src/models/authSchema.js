@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const authSignUp = new mongoose.Schema({
   email: { type: String, required: true },
   password: { type: String, required: true },
+  refreshToken: { type: String, require: true },
 });
 const SignUp = mongoose.model("authSignUp", authSignUp);
 

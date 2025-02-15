@@ -52,9 +52,9 @@ async function logIn(req, res) {
       process.env.REFRESH_TOKEN,
       { expiresIn: "7d" }
     );
-
-    registered.refreshToken = registered;
-    await registered.save();
+    // const refToken = new SignUp({ refreshToken });
+    // registered.refreshToken = registered;
+    // await refToken.save();
 
     res.status(200).json({
       message: "Login successfully",
@@ -62,6 +62,7 @@ async function logIn(req, res) {
       _id: registered._id,
       email,
       accessToken,
+      refreshToken,
     });
   } catch (e) {
     res.status(500).json({ message: "Server error" });
