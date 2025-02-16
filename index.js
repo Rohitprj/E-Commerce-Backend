@@ -18,8 +18,17 @@ const swaggerOptions = {
       description: "API documentation for E-commerce app",
     },
     servers: [{ url: "http://localhost:3009" }],
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: "http",
+          scheme: "bearer",
+          bearerFormat: "JWT",
+        },
+      },
+    },
   },
-  apis: ["./src/routes/categoriesRoute.js"],
+  apis: ["./src/routes/categoriesRoute.js", "./src/routes/authRoute.js"],
 };
 const swaggerDocs = swaggerJSDoc(swaggerOptions);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
