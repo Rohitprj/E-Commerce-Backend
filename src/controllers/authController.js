@@ -2,38 +2,52 @@ const SignUp = require("../models/authSchema");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const useragent = require("user-agent");
+const UAParser = require("ua-parser-js");
 
 async function signUp(req, res) {
   try {
     const { email, password } = req.body;
 
-    // get device info and ip address
-    const userAgent = useragent.parse(req.header["user-agent"]);
-    const deviceId = `${userAgent.platform} - ${userAgent.os}`;
-    const ipAddress = req.ip || req.connect.remoteAddress;
+    // Ensure user-agent header exists
+    const userAgentHeader = req.headers["user-agent"] || "Unknown";
 
+    // Use UAParser to extract device and OS information
+    const parser = new UAParser(userAgentHeader);
+    const os = parser.getOS().name || "Unknown OS";
+    const device =
+      parser.getDevice().model || parser.getBrowser().name || "Unknown Device";
+    const deviceId = `${os} - ${device}`;
+
+    // Get IP address
+    const ipAddress =
+      req.headers["x-forwarded-for"] ||
+      req.connection.remoteAddress ||
+      "Unknown IP";
+
+    // Check if user exists
     const existingUser = await SignUp.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ message: "User already exists" });
     }
 
+    // Hash password
     const hashedPassword = await bcrypt.hash(password, 10);
-    console.log("Password", hashedPassword);
 
+    // Save user with additional fields
     const newUser = new SignUp({
       email,
       password: hashedPassword,
       deviceId,
       ipAddress,
     });
+    await newUser.save();
 
-    const result = await newUser.save();
-    console.log(result);
-
-    res.status(201).json({ message: "User registered successfully" });
+    res
+      .status(201)
+      .json({ message: "User registered successfully", deviceId, ipAddress });
   } catch (e) {
-    res.status(500).json({ message: "Server error" });
     console.log(e);
+    res.status(500).json({ message: "Server error" });
   }
 }
 
