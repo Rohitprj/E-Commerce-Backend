@@ -1,10 +1,16 @@
 const SignUp = require("../models/authSchema");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const useragent = require("user-agent");
 
 async function signUp(req, res) {
   try {
     const { email, password } = req.body;
+
+    // get device info and ip address
+    const userAgent = useragent.parse(req.header["user-agent"]);
+    const deviceId = `${userAgent.platform} - ${userAgent.os}`;
+    const ipAddress = req.ip || req.connect.remoteAddress;
 
     const existingUser = await SignUp.findOne({ email });
     if (existingUser) {
@@ -14,7 +20,12 @@ async function signUp(req, res) {
     const hashedPassword = await bcrypt.hash(password, 10);
     console.log("Password", hashedPassword);
 
-    const newUser = new SignUp({ email, password: hashedPassword });
+    const newUser = new SignUp({
+      email,
+      password: hashedPassword,
+      deviceId,
+      ipAddress,
+    });
 
     const result = await newUser.save();
     console.log(result);
