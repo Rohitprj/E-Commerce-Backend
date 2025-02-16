@@ -21,7 +21,6 @@
     "nodemon": "^3.1.9",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1",
-    "ua-parser-js": "^2.0.2",
-    "user-agent": "^1.0.4"
+    "ua-parser-js": "^2.0.2"
   }
 }

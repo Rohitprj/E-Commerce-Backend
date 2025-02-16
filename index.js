@@ -41,7 +41,7 @@ app.use(express.json());
 const PORT = process.env.PORT || 3009;
 
 connectDB();
-
+app.set("trust proxy", true);
 app.use("/auth", authRoute);
 app.use("/categories", categoriesRoute);
 app.use("/product", productRoute);
