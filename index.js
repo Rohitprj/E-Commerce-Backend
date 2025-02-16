@@ -2,6 +2,7 @@ const express = require("express");
 const { connectDB } = require("./src/config/connectDB");
 const authRoute = require("./src/routes/authRoute");
 const categoriesRoute = require("./src/routes/categoriesRoute");
+const productRoute = require("./src/routes/productRoute");
 const bodyParser = require("body-parser");
 const swaggerJSDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
@@ -43,6 +44,7 @@ connectDB();
 
 app.use("/auth", authRoute);
 app.use("/categories", categoriesRoute);
+app.use("/product", productRoute);
 
 app.listen(PORT, () => {
   console.log(`Server is running on the port ${PORT}`);

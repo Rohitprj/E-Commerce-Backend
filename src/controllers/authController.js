@@ -56,7 +56,7 @@ async function logIn(req, res) {
     registered.refreshToken = refreshToken;
     await registered.save();
 
-    res.status(200).json({
+    res.status(201).json({
       message: "Login successfully",
       success: true,
       accessToken,
