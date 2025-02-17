@@ -38,7 +38,12 @@ async function addProduct(req, res) {
       description,
       brand,
     } = req.body;
-
+    const productId = await Products.findOne({
+      product_id,
+    });
+    if (productId) {
+      return res.status(400).json({ message: "Product id exists !" });
+    }
     const addProduct = new Products({
       product_id,
       name,
@@ -56,4 +61,11 @@ async function addProduct(req, res) {
     res.status(500).json({ message: "server error!" });
   }
 }
-module.exports = { products, productById, addProduct };
+
+// update full product
+async function updateProduct(req, res) {
+  try {
+    const updateProduct = await Products.findByIdAndUpdate();
+  } catch (error) {}
+}
+module.exports = { products, productById, addProduct, updateProduct };
