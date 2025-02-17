@@ -1,8 +1,13 @@
 const express = require("express");
-const { products, productById } = require("../controllers/productController");
+const {
+  products,
+  productById,
+  addProduct,
+} = require("../controllers/productController");
 const authenticationToken = require("../middleware/productMiddleware");
 const router = express.Router();
 
 router.get("/products", authenticationToken, products);
 router.get("/productId/:id", productById);
+router.post("/addProduct", addProduct);
 module.exports = router;
