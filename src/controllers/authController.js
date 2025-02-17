@@ -17,6 +17,8 @@ async function signUp(req, res) {
 
     const ipAddress =
       req.headers["x-forwarded-for"] ||
+      req.headers["x-real-ip"] ||
+      req.headers["cf-connecting-ip"] ||
       req.connection.remoteAddress ||
       req.socket.remoteAddress ||
       "Unknown IP";
