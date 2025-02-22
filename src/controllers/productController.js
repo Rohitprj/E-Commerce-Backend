@@ -95,4 +95,17 @@ async function updateProduct(req, res) {
     res.status(500).json({ massage: "Server error" });
   }
 }
-module.exports = { products, productById, addProduct, updateProduct };
+
+// Partial update through patch
+async function updateProdPartially(req, res) {
+  const { id } = req.params;
+  const { price } = req.body;
+}
+
+module.exports = {
+  products,
+  productById,
+  addProduct,
+  updateProduct,
+  updateProdPartially,
+};
