@@ -87,19 +87,46 @@ async function updateProduct(req, res) {
       description,
       brand,
     });
-    if (!updateProduct) {
-      res.status(404).json({ massage: "Id not found", data: null });
-    }
+    // if (!updateProduct) {
+    //   res.status(404).json({ massage: "Id not found", data: null });
+    // }
     res.status(200).json({ massage: "Product updated", data: updateProduct });
   } catch (error) {
-    res.status(500).json({ massage: "Server error" });
+    res.status(500).json({ massage: "Server error", data: error });
   }
 }
 
 // Partial update through patch
 async function updateProdPartially(req, res) {
-  const { id } = req.params;
-  const { price } = req.body;
+  try {
+    const { id } = req.params;
+    const {
+      product_id,
+      name,
+      category,
+      image,
+      price,
+      rating,
+      description,
+      brand,
+    } = req.body;
+    const partialUpdate = await Products.findByIdAndUpdate(id, {
+      product_id,
+      name,
+      category,
+      image,
+      price,
+      rating,
+      description,
+      brand,
+    });
+    // if (partialUpdate) {
+    //   res.status(404).json({ message: "item exists" });
+    // }
+    res.status(200).json({ message: "item added", data: partialUpdate });
+  } catch (error) {
+    res.status(200).json({ message: "Server error", data: error });
+  }
 }
 
 module.exports = {
