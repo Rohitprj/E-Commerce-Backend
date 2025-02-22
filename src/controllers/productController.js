@@ -65,7 +65,34 @@ async function addProduct(req, res) {
 // update full product
 async function updateProduct(req, res) {
   try {
-    const updateProduct = await Products.findByIdAndUpdate();
-  } catch (error) {}
+    const { id } = req.params;
+    const {
+      product_id,
+      name,
+      category,
+      image,
+      price,
+      rating,
+      description,
+      brand,
+    } = req.body;
+
+    const updateProduct = await Products.findByIdAndUpdate(id, {
+      product_id,
+      name,
+      category,
+      image,
+      price,
+      rating,
+      description,
+      brand,
+    });
+    if (!updateProduct) {
+      res.status(404).json({ massage: "Id not found", data: null });
+    }
+    res.status(200).json({ massage: "Product updated", data: updateProduct });
+  } catch (error) {
+    res.status(500).json({ massage: "Server error" });
+  }
 }
 module.exports = { products, productById, addProduct, updateProduct };
