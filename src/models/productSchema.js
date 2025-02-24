@@ -10,6 +10,7 @@ const productSchema = new mongoose.Schema({
   rating: { type: Number, required: true },
   description: { type: String, required: true },
   brand: { type: String, required: true },
+  stock: { type: Number, required: true },
 });
 
 const Products = mongoose.model("products", productSchema);

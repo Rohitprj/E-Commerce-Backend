@@ -37,6 +37,7 @@ async function addProduct(req, res) {
       rating,
       description,
       brand,
+      stock,
     } = req.body;
     const productId = await Products.findOne({
       product_id,
@@ -53,6 +54,7 @@ async function addProduct(req, res) {
       rating,
       description,
       brand,
+      stock,
     });
     await addProduct.save();
     res.status(201).json({ message: "product addad !", addProduct });
@@ -75,6 +77,7 @@ async function updateProduct(req, res) {
       rating,
       description,
       brand,
+      stock,
     } = req.body;
 
     const updateProduct = await Products.findByIdAndUpdate(id, {
@@ -86,6 +89,7 @@ async function updateProduct(req, res) {
       rating,
       description,
       brand,
+      stock,
     });
     // if (!updateProduct) {
     //   res.status(404).json({ massage: "Id not found", data: null });
@@ -109,6 +113,7 @@ async function updateProdPartially(req, res) {
       rating,
       description,
       brand,
+      stock,
     } = req.body;
     const partialUpdate = await Products.findByIdAndUpdate(
       id,
@@ -121,6 +126,7 @@ async function updateProdPartially(req, res) {
         rating,
         description,
         brand,
+        stock,
       },
       { new: true }
     );
@@ -134,11 +140,13 @@ async function deleteProduct(req, res) {
   try {
     const { id } = req.params;
     const deleteProduct = await Products.findByIdAndDelete(id);
+    // const deleteProduct = await Products.findOneAndDelete({ product_id: id });
     if (!deleteProduct) {
       res.status(404).json({ message: "Id not found" });
     }
     res.status(200).json({ message: "Product deleted successfully" });
   } catch (error) {
+    console.log(error);
     res.status(500).json({ message: "Server error" });
   }
 }
