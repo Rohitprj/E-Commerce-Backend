@@ -110,22 +110,36 @@ async function updateProdPartially(req, res) {
       description,
       brand,
     } = req.body;
-    const partialUpdate = await Products.findByIdAndUpdate(id, {
-      product_id,
-      name,
-      category,
-      image,
-      price,
-      rating,
-      description,
-      brand,
-    });
-    // if (partialUpdate) {
-    //   res.status(404).json({ message: "item exists" });
-    // }
+    const partialUpdate = await Products.findByIdAndUpdate(
+      id,
+      {
+        product_id,
+        name,
+        category,
+        image,
+        price,
+        rating,
+        description,
+        brand,
+      },
+      { new: true }
+    );
     res.status(200).json({ message: "item added", data: partialUpdate });
   } catch (error) {
     res.status(200).json({ message: "Server error", data: error });
+  }
+}
+
+async function deleteProduct(req, res) {
+  try {
+    const { id } = req.params;
+    const deleteProduct = await Products.findByIdAndDelete(id);
+    if (!deleteProduct) {
+      res.status(404).json({ message: "Id not found" });
+    }
+    res.status(200).json({ message: "Product deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: "Server error" });
   }
 }
 
@@ -135,4 +149,5 @@ module.exports = {
   addProduct,
   updateProduct,
   updateProdPartially,
+  deleteProduct,
 };
