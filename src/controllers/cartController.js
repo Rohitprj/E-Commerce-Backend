@@ -10,17 +10,14 @@ async function addToCart(req, res) {
     if (!productId) {
       return res.status(400).json({ message: "Product don't exists !" });
     }
-    const addCart = new Cart(
-      {
-        product_id,
-        name,
-        category,
-        image,
-        price,
-        quantity,
-      },
-      { new: true }
-    );
+    const addCart = new Cart({
+      product_id,
+      name,
+      category,
+      image,
+      price,
+      quantity,
+    });
     await addCart.save();
     res
       .status(201)

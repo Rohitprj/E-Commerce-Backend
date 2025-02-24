@@ -3,6 +3,7 @@ const { connectDB } = require("./src/config/connectDB");
 const authRoute = require("./src/routes/authRoute");
 const categoriesRoute = require("./src/routes/categoriesRoute");
 const productRoute = require("./src/routes/productRoute");
+const cartRoute = require("./src/routes/cartRoute");
 const bodyParser = require("body-parser");
 const swaggerJSDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
@@ -45,6 +46,7 @@ app.set("trust proxy", true);
 app.use("/auth", authRoute);
 app.use("/categories", categoriesRoute);
 app.use("/product", productRoute);
+app.use("/cart", cartRoute);
 
 app.listen(PORT, () => {
   console.log(`Server is running on the port ${PORT}`);
