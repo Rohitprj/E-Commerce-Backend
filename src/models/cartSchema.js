@@ -1,5 +1,7 @@
+const { required } = require("joi");
 const mongoose = require("mongoose");
-const cartSchema = new mongoose.Schema({
+
+const productSchema = new mongoose.Schema({
   product_id: { type: String, required: true, unique: true },
   name: { type: String, required: true },
   category: { type: String, required: true },
@@ -7,20 +9,9 @@ const cartSchema = new mongoose.Schema({
   price: { type: Number, required: true },
   quantity: { type: Number, required: true },
 });
+
+const cartSchema = new mongoose.Schema({
+  item: { type: [productSchema], required: true },
+});
 const Cart = mongoose.model("cart", cartSchema);
 module.exports = Cart;
-// {
-//   "cart_id": "string",
-//   "user_id": "string",
-//   "products": [
-//     {
-//       "product_id": "string",
-//       "name": "string",
-//       "category": "string",
-//       "image": "string",
-//       "price": number,
-//       "quantity": number
-//     }
-//   ],
-//   "total_price": number
-// }
