@@ -23,8 +23,17 @@ async function addToCart(req, res) {
     const addCart = new Cart({
       item: [productWithQuantity],
     });
-
+    console.log("Data", addCart);
     await addCart.save();
+
+    Cart.updateOne(
+      {},
+      {
+        $push: {
+          item: {},
+        },
+      }
+    );
 
     res.status(201).json({
       message: "Added to cart successfully",
