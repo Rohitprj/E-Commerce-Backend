@@ -26,6 +26,8 @@ async function addToCart(req, res) {
     console.log("Data", addCart);
     await addCart.save();
 
+    if (addCart) {
+    }
     Cart.updateOne(
       {},
       {
