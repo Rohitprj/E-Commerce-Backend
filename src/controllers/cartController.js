@@ -17,29 +17,43 @@ async function addToCart(req, res) {
     if (!product) {
       return res.status(400).json({ message: "Product doesn't exist!" });
     }
+    let cart = await Cart.findOne();
 
-    const productWithQuantity = { ...product.toObject(), quantity };
-
-    const addCart = new Cart({
-      item: [productWithQuantity],
-    });
-    console.log("Data", addCart);
-    await addCart.save();
-
-    if (addCart) {
+    if (!cart) {
+      cart = new Cart({ item: [] });
     }
-    Cart.updateOne(
-      {},
-      {
-        $push: {
-          item: {},
-        },
-      }
-    );
+    const cartProdExisting = cart.item.find((data) => {
+      data.product_id.toString() === product_id;
+    });
+
+    if (cartProdExisting) {
+      cartProdExisting.quantity += quantity;
+    } else {
+      cart.item.push();
+    }
+    await cart.save();
+    // const productWithQuantity = { ...product.toObject(), quantity };
+
+    // const addCart = new Cart({
+    //   item: [productWithQuantity],
+    // });
+    // console.log("Data", addCart);
+    // await addCart.save();
+
+    // if (addCart) {
+    // }
+    // Cart.updateOne(
+    //   {},
+    //   {
+    //     $push: {
+    //       item: {},
+    //     },
+    //   }
+    // );
 
     res.status(201).json({
       message: "Added to cart successfully",
-      data: addCart,
+      data: cart,
     });
   } catch (error) {
     console.error("Error in addToCart:", error.message);
