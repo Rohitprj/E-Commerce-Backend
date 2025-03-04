@@ -4,6 +4,7 @@ const Products = require("../models/productSchema");
 async function addToCart(req, res) {
   try {
     const { product_id, quantity } = req.body;
+    const { id } = req.params;
 
     if (!product_id || !quantity) {
       return res
@@ -24,18 +25,21 @@ async function addToCart(req, res) {
       item: [productWithQuantity],
     });
     console.log("Data", addCart);
+    if (addCart) {
+      return res.status(400).json({ message: "Product already exists" });
+    }
+
     await addCart.save();
 
-    if (addCart) {
-    }
-    Cart.updateOne(
-      {},
+    const updateCart = Cart.updateOne(
+      { id },
       {
         $push: {
           item: {},
         },
       }
     );
+    await updateCart.save();
 
     res.status(201).json({
       message: "Added to cart successfully",
