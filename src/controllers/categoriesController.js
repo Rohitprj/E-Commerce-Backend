@@ -4,6 +4,7 @@ const Categories = require("../models/categoriesSchema");
 async function allCategories(req, res) {
   try {
     const categories = await Categories.find();
+    console.log(categories);
     res.json(categories);
   } catch (error) {
     console.log(error);

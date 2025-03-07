@@ -5,17 +5,26 @@ const Products = require("../models/productSchema");
 async function cartSystem(req, res) {
   try {
     const { userId, prodId } = req.body;
-    const conUserId = new Types.ObjectId(userId);
-    const conProdId = new Types.ObjectId(prodId);
 
-    const userIdExists = SignUp.exists({ _id: userId });
-    if (!userIdExists) throw new Error("user id not exists");
-    console.log("Id exists", userIdExists);
+    const userIdExists = SignUp.exists({ _id: userId }).lean();
+    if (!userIdExists) {
+      return res.send({ message: "user id not exists" });
+    }
+
+    const prodIdExists = Products.findById(prodId).lean();
+    if (!prodIdExists) {
+      return res.send({ message: "Product not exists" });
+    }
+
+    console.log("Products", prodIdExists);
+    return res.send({ message: "user id && product exists" });
   } catch (error) {
+    res.send({ message: "Server error !" });
     console.log(error);
   }
 }
 module.exports = { cartSystem };
+
 // const Cart = require("../models/cartSchema");
 // const Products = require("../models/productSchema");
 
