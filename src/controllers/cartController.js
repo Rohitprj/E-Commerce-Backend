@@ -1,11 +1,16 @@
+const { Types } = require("mongoose");
 const SignUp = require("../models/authSchema");
 const Products = require("../models/productSchema");
 
 async function cartSystem(req, res) {
   try {
-    const { userId, prodId } = req.params.id;
-    const takeUserId = SignUp.findById(userId);
-    const takeProdId = Products.findById(prodId);
+    const { userId, prodId } = req.body;
+    const conUserId = new Types.ObjectId(userId);
+    const conProdId = new Types.ObjectId(prodId);
+
+    const userIdExists = SignUp.exists({ _id: userId });
+    if (!userIdExists) throw new Error("user id not exists");
+    console.log("Id exists", userIdExists);
   } catch (error) {
     console.log(error);
   }
