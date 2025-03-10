@@ -1,21 +1,25 @@
 const { Types } = require("mongoose");
 const SignUp = require("../models/authSchema");
 const Products = require("../models/productSchema");
+const CreateCart = require("../models/cartSystemSchema");
 
 async function cartSystem(req, res) {
   try {
     const { userId, prodId } = req.body;
-
+    // Validation for user exists
     const userIdExists = SignUp.exists({ _id: userId }).lean();
     if (!userIdExists) {
       return res.send({ message: "user id not exists" });
     }
-
+    // Validation for product exists
     const prodIdExists = Products.findById(prodId).lean();
     if (!prodIdExists) {
       return res.send({ message: "Product not exists" });
     }
-
+    let cart = await CreateCart.findone();
+    if (!cart) {
+      cart = new CreateCart({ userId: userId, item: [] });
+    }
     console.log("Products", prodIdExists);
     return res.send({ message: "user id && product exists" });
   } catch (error) {
