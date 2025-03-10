@@ -6,22 +6,24 @@ const CreateCart = require("../models/cartSystemSchema");
 async function cartSystem(req, res) {
   try {
     const { userId, prodId } = req.body;
-    // Validation for user exists
-    const userIdExists = SignUp.exists({ _id: userId }).lean();
+    // Validation user existence
+    const userIdExists = await SignUp.exists({ _id: userId });
     if (!userIdExists) {
-      return res.send({ message: "user id not exists" });
+      return res.status(404).json({ message: "User ID does not exist" });
     }
-    // Validation for product exists
-    const prodIdExists = Products.findById(prodId).lean();
+    // Validation product existance
+    const prodIdExists = await Products.findOne({ _id: prodId });
     if (!prodIdExists) {
-      return res.send({ message: "Product not exists" });
+      return res.status(404).json({ message: "Product does not exist" });
     }
     let cart = await CreateCart.findone();
     if (!cart) {
       cart = new CreateCart({ userId: userId, item: [] });
     }
-    console.log("Products", prodIdExists);
-    return res.send({ message: "user id && product exists" });
+    return res.status(200).json({
+      message: "user id && product exists",
+      data: prodIdExists,
+    });
   } catch (error) {
     res.send({ message: "Server error !" });
     console.log(error);
