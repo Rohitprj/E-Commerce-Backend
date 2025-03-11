@@ -1,4 +1,3 @@
-const { Types } = require("mongoose");
 const SignUp = require("../models/authSchema");
 const Products = require("../models/productSchema");
 const CreateCart = require("../models/cartSystemSchema");
@@ -25,8 +24,8 @@ async function cartSystem(req, res) {
         userId: userId,
         item: [{ prodId, quantity }],
       });
+      await cart.save();
     }
-    await cart.save();
     return res.status(200).json({
       message: "user id && product exists",
       data: prodIdExists,
@@ -129,3 +128,6 @@ module.exports = { cartSystem };
 // }
 
 // module.exports = { addToCart };
+
+// Aggregation commands :- Match lookup unwind group project sort limit skip count sum multiply addfeilds replaceRoute facet bucket bucketAuto merge
+// tax price discount prodId quantity
