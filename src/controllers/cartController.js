@@ -5,7 +5,7 @@ const CreateCart = require("../models/cartSystemSchema");
 
 async function cartSystem(req, res) {
   try {
-    const { userId, prodId } = req.body;
+    const { userId, prodId, quantity = 1 } = req.body;
     // Validation user existence
     const userIdExists = await SignUp.exists({ _id: userId });
     if (!userIdExists) {
@@ -21,7 +21,10 @@ async function cartSystem(req, res) {
 
     let cart = await CreateCart.findOne({ userId });
     if (!cart) {
-      cart = new CreateCart({ userId: userId, item: [prodIdExists] });
+      cart = new CreateCart({
+        userId: userId,
+        item: [{ prodId, quantity }],
+      });
     }
     await cart.save();
     return res.status(200).json({
