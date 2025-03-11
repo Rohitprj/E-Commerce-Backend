@@ -11,8 +11,8 @@ const cartItemSchema = new Schema({
 });
 
 const cartSchema = new Schema({
-  userId: { type: Types.ObjectId, ref: "users" },
-  item: { type: [cartItemSchema], required: true },
+  userId: { type: Types.ObjectId, ref: "users", required: true },
+  item: { type: [cartItemSchema], default: [] },
 });
 
 const CreateCart = mongoose.model("carts", cartSchema);

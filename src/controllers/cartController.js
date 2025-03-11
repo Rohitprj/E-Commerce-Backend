@@ -9,23 +9,27 @@ async function cartSystem(req, res) {
     // Validation user existence
     const userIdExists = await SignUp.exists({ _id: userId });
     if (!userIdExists) {
-      return res.status(404).json({ message: "User ID does not exist" });
+      return res.status(404).json({
+        message: "Can't make cart your user ID does not exist signUp first",
+      });
     }
     // Validation product existance
     const prodIdExists = await Products.findOne({ _id: prodId });
     if (!prodIdExists) {
       return res.status(404).json({ message: "Product does not exist" });
     }
-    let cart = await CreateCart.findone();
+
+    let cart = await CreateCart.findOne({ userId });
     if (!cart) {
-      cart = new CreateCart({ userId: userId, item: [] });
+      cart = new CreateCart({ userId: userId, item: [prodIdExists] });
     }
+    await cart.save();
     return res.status(200).json({
       message: "user id && product exists",
       data: prodIdExists,
     });
   } catch (error) {
-    res.send({ message: "Server error !" });
+    res.status(500).json({ message: "Server error !" });
     console.log(error);
   }
 }
