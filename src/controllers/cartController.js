@@ -18,12 +18,20 @@ async function cartSystem(req, res) {
       return res.status(404).json({ message: "Product does not exist" });
     }
     console.log(`price: ${prodIdExists.price}`);
+    console.log(`name: ${prodIdExists.name}`);
 
     let cart = await CreateCart.findOne({ userId });
     if (!cart) {
       cart = new CreateCart({
         userId: userId,
-        item: [{ prodId, quantity, price: prodIdExists.price }],
+        item: [
+          {
+            prodId,
+            name: prodIdExists.name,
+            quantity,
+            price: prodIdExists.price,
+          },
+        ],
       });
       await cart.save();
     }
