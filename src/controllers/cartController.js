@@ -17,18 +17,19 @@ async function cartSystem(req, res) {
     if (!prodIdExists) {
       return res.status(404).json({ message: "Product does not exist" });
     }
+    console.log(`price: ${prodIdExists.price}`);
 
     let cart = await CreateCart.findOne({ userId });
     if (!cart) {
       cart = new CreateCart({
         userId: userId,
-        item: [{ prodId, quantity }],
+        item: [{ prodId, quantity, price: prodIdExists.price }],
       });
       await cart.save();
     }
     return res.status(200).json({
       message: "user id && product exists",
-      data: prodIdExists,
+      data: cart,
     });
   } catch (error) {
     res.status(500).json({ message: "Server error !" });
