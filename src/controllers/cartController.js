@@ -34,11 +34,11 @@ async function cartSystem(req, res) {
         ],
       });
     } else {
-      const existingItem = cart.item.findIndex((item) => {
-        item.prodId.toString() === prodId;
-      });
+      const existingItem = cart.item.findIndex(
+        (item) => item.prodId.toString() === prodId
+      );
       if (existingItem !== -1) {
-        cart.item[existingItem].quantity += quantity;
+        cart.item[existingItem].quantity = quantity + 1;
       } else {
         cart.item.push({
           prodId,
