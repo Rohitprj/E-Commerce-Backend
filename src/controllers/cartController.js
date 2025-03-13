@@ -33,8 +33,22 @@ async function cartSystem(req, res) {
           },
         ],
       });
-      await cart.save();
+    } else {
+      const existingItem = cart.item.findIndex((item) => {
+        item.prodId.toString() === prodId;
+      });
+      if (existingItem !== -1) {
+        cart.item[existingItem].quantity += quantity;
+      } else {
+        cart.item.push({
+          prodId,
+          name: prodIdExists.name,
+          quantity,
+          price: prodIdExists.price,
+        });
+      }
     }
+    await cart.save();
     return res.status(200).json({
       message: "user id && product exists",
       data: cart,
