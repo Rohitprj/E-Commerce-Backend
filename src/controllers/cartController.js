@@ -4,7 +4,7 @@ const CreateCart = require("../models/cartSystemSchema");
 
 async function cartSystem(req, res) {
   try {
-    const { userId, prodId, quantity = 1 } = req.body;
+    const { userId, prodId } = req.body;
     // Validation user existence
     const userIdExists = await SignUp.exists({ _id: userId });
     if (!userIdExists) {
@@ -28,27 +28,40 @@ async function cartSystem(req, res) {
           {
             prodId,
             name: prodIdExists.name,
-            quantity,
+            quantity: 1,
             price: prodIdExists.price,
           },
         ],
       });
+      await cart.save();
     } else {
       const existingItem = cart.item.findIndex(
         (item) => item.prodId.toString() === prodId
       );
+
+      console.log(existingItem);
+
       if (existingItem !== -1) {
-        cart.item[existingItem].quantity = quantity + 1;
+        const resp = await CreateCart.findOneAndUpdate(
+          { userId, "item.prodId": prodId },
+          {
+            $inc: {
+              "item.$.quantity": 1,
+            },
+          },
+          { new: true }
+        ).lean();
+        console.log("Items", { resp: resp.item });
       } else {
         cart.item.push({
           prodId,
           name: prodIdExists.name,
-          quantity,
+          quantity: 1,
           price: prodIdExists.price,
         });
       }
     }
-    await cart.save();
+
     return res.status(200).json({
       message: "user id && product exists",
       data: cart,
