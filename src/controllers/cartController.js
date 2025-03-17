@@ -20,13 +20,13 @@ async function cartSystem(req, res) {
     console.log(`price: ${prodIdExists.price}`);
     console.log(`name: ${prodIdExists.name}`);
 
-    let cart = await CreateCart.findOne({ userId });
+    let cart = await CreateCart.findOne({ _id: userId });
     if (!cart) {
       cart = new CreateCart({
-        userId: userId,
+        _id: userId,
         item: [
           {
-            prodId,
+            _id: prodId,
             name: prodIdExists.name,
             quantity: 1,
             price: prodIdExists.price,
@@ -36,14 +36,14 @@ async function cartSystem(req, res) {
       await cart.save();
     } else {
       const existingItem = cart.item.findIndex(
-        (item) => item.prodId.toString() === prodId
+        (item) => item._id.toString() === prodId
       );
 
       console.log(existingItem);
 
       if (existingItem !== -1) {
         const resp = await CreateCart.findOneAndUpdate(
-          { userId, "item.prodId": prodId },
+          { _id: userId, "item._id": prodId },
           {
             $inc: {
               "item.$.quantity": 1,
@@ -54,11 +54,11 @@ async function cartSystem(req, res) {
         console.log("Items", { resp: resp.item });
       } else {
         const pushItem = await CreateCart.findOneAndUpdate(
-          { userId },
+          { _id: userId },
           {
             $push: {
               item: {
-                prodId,
+                _id: prodId,
                 name: prodIdExists.name,
                 quantity: 1,
                 price: prodIdExists.price,

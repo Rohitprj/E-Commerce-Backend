@@ -30,7 +30,11 @@ const swaggerOptions = {
       },
     },
   },
-  apis: ["./src/routes/categoriesRoute.js", "./src/routes/authRoute.js"],
+  apis: [
+    "./src/routes/categoriesRoute.js",
+    "./src/routes/authRoute.js",
+    "./src/routes/productRoute.js",
+  ],
 };
 const swaggerDocs = swaggerJSDoc(swaggerOptions);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));

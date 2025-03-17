@@ -3,7 +3,7 @@ const { Types, Schema } = mongoose;
 
 const cartItemSchema = new Schema(
   {
-    prodId: {
+    _id: {
       type: Types.ObjectId,
       ref: "products",
       required: true,
@@ -19,7 +19,7 @@ const cartItemSchema = new Schema(
 
 const cartSchema = new Schema(
   {
-    userId: { type: Types.ObjectId, ref: "users", required: true },
+    _id: { type: Types.ObjectId, ref: "users", required: true },
     item: { type: [cartItemSchema], default: [] },
   },
   {
