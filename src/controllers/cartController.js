@@ -53,12 +53,27 @@ async function cartSystem(req, res) {
         ).lean();
         console.log("Items", { resp: resp.item });
       } else {
-        cart.item.push({
-          prodId,
-          name: prodIdExists.name,
-          quantity: 1,
-          price: prodIdExists.price,
-        });
+        const pushItem = await CreateCart.findOneAndUpdate(
+          { userId },
+          {
+            $push: {
+              item: {
+                prodId,
+                name: prodIdExists.name,
+                quantity: 1,
+                price: prodIdExists.price,
+              },
+            },
+          },
+          { new: true }
+        ).lean();
+        console.log("pushItem", pushItem);
+        // cart.item.push({
+        //   prodId,
+        //   name: prodIdExists.name,
+        //   quantity: 1,
+        //   price: prodIdExists.price,
+        // });
       }
     }
 
