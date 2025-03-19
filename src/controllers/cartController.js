@@ -68,12 +68,6 @@ async function cartSystem(req, res) {
           { new: true }
         ).lean();
         console.log("pushItem", pushItem);
-        // cart.item.push({
-        //   prodId,
-        //   name: prodIdExists.name,
-        //   quantity: 1,
-        //   price: prodIdExists.price,
-        // });
       }
     }
 
@@ -87,3 +81,4 @@ async function cartSystem(req, res) {
   }
 }
 module.exports = { cartSystem };
+// tax price discount prodId quantity
