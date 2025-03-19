@@ -25,7 +25,6 @@ app.use("/cart", cartRoute);
 
 app.listen(PORT, () => {
   console.log(`Server is running on the port ${PORT}`);
-  // console.log(`Swagger Docs available at http://localhost:${PORT}/api-docs`);
 });
 
 // const express = require("express");

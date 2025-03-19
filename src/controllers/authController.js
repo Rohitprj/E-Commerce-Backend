@@ -1,40 +1,34 @@
 const SignUp = require("../models/authSchema");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const UAParser = require("ua-parser-js");
 
 async function signUp(req, res) {
   try {
     const { email, password } = req.body;
 
-    const userAgentHeader = req.headers["user-agent"] || "Unknown";
-
-    const parser = new UAParser(userAgentHeader);
-    const os = parser.getOS().name || "Unknown OS";
-    const device =
-      parser.getDevice().model || parser.getBrowser().name || "Unknown Device";
-    const deviceId = `${os} - ${device}`;
-
-    const ipAddress =
-      req.headers["x-forwarded-for"] ||
-      req.headers["x-real-ip"] ||
-      req.headers["cf-connecting-ip"] ||
-      req.connection.remoteAddress ||
-      req.socket.remoteAddress ||
-      "Unknown IP";
-
     const existingUser = await SignUp.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ message: "User already exists" });
     }
-
     const hashedPassword = await bcrypt.hash(password, 10);
-
+    const accessToken = jwt.sign(
+      { email: email, _id: email._id },
+      process.env.ACCESS_TOKEN,
+      { expiresIn: "1h" }
+    );
+    const refreshToken = jwt.sign(
+      {
+        email: email,
+        _id: email._id,
+      },
+      process.env.REFRESH_TOKEN,
+      { expiresIn: "14d" }
+    );
     const newUser = new SignUp({
       email,
       password: hashedPassword,
-      deviceId,
-      ipAddress,
+      accessToken,
+      refreshToken,
     });
     await newUser.save();
 
