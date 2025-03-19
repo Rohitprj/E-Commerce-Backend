@@ -34,7 +34,7 @@ async function signUp(req, res) {
 
     res
       .status(201)
-      .json({ message: "User registered successfully", deviceId, ipAddress });
+      .json({ message: "User registered successfully", data: newUser });
   } catch (e) {
     console.log(e);
     res.status(500).json({ message: "Server error" });
