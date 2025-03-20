@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const { Types, Schema } = mongoose;
 
-const cartItemSchema = new Schema(
+export const cartItemSchema = new Schema(
   {
     _id: {
       type: Types.ObjectId,

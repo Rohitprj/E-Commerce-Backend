@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const { Types, Schema } = mongoose;
 
-const addressBasedSchema = new Schema({
+const AddressBasedSchema = new Schema({
   name: { type: String, required: true },
   phone: { type: Number, required: true },
   address1: { type: String, required: true },
@@ -11,14 +11,14 @@ const addressBasedSchema = new Schema({
   zipCode: { type: Number, required: true },
 });
 
-const addressSchema = new Schema(
+const AddressSchema = new Schema(
   {
     uid: { type: Types.ObjectId, required: true, ref: "user" },
   },
   { timestamps: true }
 );
 
-addressBasedSchema.add(addressSchema);
-const AdderssModel = mongoose.model("addresses", addressSchema);
+AddressBasedSchema.add(AddressSchema);
+const AdderssModel = mongoose.model("addresses", AddressSchema);
 
-module.exports = AdderssModel;
+module.exports = { AdderssModel, AddressBasedSchema };
