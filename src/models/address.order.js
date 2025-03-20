@@ -1,5 +1,5 @@
-const Mongoose = require("mongoose");
-const { Types, Schema } = Mongoose;
+const mongoose = require("mongoose");
+const { Types, Schema } = mongoose;
 
 const addressBasedSchema = new Schema({
   name: { type: String, required: true },
@@ -11,6 +11,14 @@ const addressBasedSchema = new Schema({
   zipCode: { type: Number, required: true },
 });
 
-const adderssSchema = new Schema({
-  uid: { type: Types.ObjectId, required: true, ref: "user" },
-});
+const addressSchema = new Schema(
+  {
+    uid: { type: Types.ObjectId, required: true, ref: "user" },
+  },
+  { timestamps: true }
+);
+
+addressBasedSchema.add(addressSchema);
+const AdderssModel = mongoose.model("addresses", addressSchema);
+
+module.exports = AdderssModel;
