@@ -5,3 +5,4 @@ async function order(req, res) {
     console.log(error);
   }
 }
+module.exports = order;
