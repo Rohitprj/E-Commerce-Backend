@@ -1,6 +1,6 @@
 const SignUp = require("../models/authSchema");
 const Products = require("../models/productSchema");
-const CreateCart = require("../models/cartSystemSchema");
+const { CreateCart } = require("../models/cartSystemSchema");
 
 async function cartSystem(req, res) {
   try {
@@ -41,7 +41,7 @@ async function cartSystem(req, res) {
 
       console.log(existingItem);
 
-      if (existingItem !== -1) {
+      if (!(existingItem !== -1)) {
         const resp = await CreateCart.findOneAndUpdate(
           { _id: userId, "item._id": prodId },
           {
@@ -53,19 +53,35 @@ async function cartSystem(req, res) {
         ).lean();
         console.log("Items", { resp: resp.item });
       } else {
+        console.log("I WAS CALLED WHEN NEW ITEM PUSHED!");
         // tax discount total subtotal prodId price quantity name
         const pushItem = await CreateCart.findOneAndUpdate(
           { _id: userId },
-          {
-            $push: {
-              item: {
-                _id: prodId,
-                name: prodIdExists.name,
-                quantity: 1,
-                price: prodIdExists.price,
+          [
+            {
+              $addFields: {
+                item: {
+                  $concatArrays: [
+                    "$item",
+                    [
+                      {
+                        _id: prodId,
+                        name: prodIdExists.name,
+                        quantity: 1,
+                        price: prodIdExists.price,
+                      },
+                    ],
+                  ],
+                },
               },
             },
-          },
+
+            {
+              $set: {
+                subtotal: 500,
+              },
+            },
+          ],
           { new: true }
         ).lean();
         console.log("pushItem", pushItem);
