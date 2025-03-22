@@ -53,6 +53,7 @@ async function cartSystem(req, res) {
         ).lean();
         console.log("Items", { resp: resp.item });
       } else {
+        // tax discount total subtotal prodId price quantity name
         const pushItem = await CreateCart.findOneAndUpdate(
           { _id: userId },
           {
@@ -81,4 +82,3 @@ async function cartSystem(req, res) {
   }
 }
 module.exports = { cartSystem };
-// tax discount total subtotal prodId price quantity

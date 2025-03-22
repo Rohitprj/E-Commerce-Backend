@@ -26,11 +26,13 @@ const cartSchema = new Schema(
   {
     _id: { type: Types.ObjectId, ref: "users", required: true },
     item: { type: [cartItemSchema], default: [] },
+    total: { type: Number, min: 0, default: 0, required: true },
   },
   {
     _id: false,
   }
 );
+cartSchema.add(cartPrizingSchema);
 
 const CreateCart = mongoose.model("carts", cartSchema);
 
