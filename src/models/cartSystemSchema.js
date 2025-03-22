@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const { Types, Schema } = mongoose;
+
 export const cartPrizingSchema = new Schema({
   subtotal: { type: Number, required: true, min: 0, default: 0 },
   tax: { type: Number, required: true, min: 0, default: 0 },
