@@ -81,4 +81,4 @@ async function cartSystem(req, res) {
   }
 }
 module.exports = { cartSystem };
-// tax price discount prodId quantity
+// tax discount total subtotal prodId price quantity
