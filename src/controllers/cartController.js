@@ -139,6 +139,7 @@ async function cartSystem(req, res) {
           },
         ],
         subtotal: prodIdExists.price, // Initial subtotal
+        total: prodIdExists.price, // Initial subtotal
       });
       await cart.save();
     } else {
@@ -162,8 +163,15 @@ async function cartSystem(req, res) {
           (acc, curr) => acc + curr.price * curr.quantity,
           0
         );
+        const total = updatedCart.item.reduce(
+          (acc, curr) => acc + curr.price * curr.quantity - (acc - 0.1),
+          0
+        );
 
-        await CreateCart.updateOne({ _id: userId }, { $set: { subtotal } });
+        await CreateCart.updateOne(
+          { _id: userId },
+          { $set: { subtotal, total } }
+        );
 
         console.log("Quantity increased", updatedCart);
         cart = await CreateCart.findOne({ _id: userId }).lean();
