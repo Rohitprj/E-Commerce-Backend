@@ -99,6 +99,126 @@
 // }
 // module.exports = { cartSystem };
 
+// const SignUp = require("../models/authSchema");
+// const Products = require("../models/productSchema");
+// const { CreateCart } = require("../models/cartSystemSchema");
+// const { disconnect } = require("mongoose");
+
+// async function cartSystem(req, res) {
+//   try {
+//     const { userId, prodId } = req.body;
+//     let discountGiven = 0.1;
+//     let taxGiven = 0.18;
+
+//     // Validate user existence
+//     const userIdExists = await SignUp.exists({ _id: userId });
+//     if (!userIdExists) {
+//       return res.status(404).json({
+//         message: "Can't make cart, your user ID does not exist. Sign up first.",
+//       });
+//     }
+
+//     // Validate product existence
+//     const prodIdExists = await Products.findOne({ _id: prodId });
+//     if (!prodIdExists) {
+//       return res.status(404).json({ message: "Product does not exist" });
+//     }
+
+//     console.log(`price: ${prodIdExists.price}`);
+//     console.log(`name: ${prodIdExists.name}`);
+
+//     let cart = await CreateCart.findOne({ _id: userId });
+
+//     if (!cart) {
+//       // Create a new cart if it doesn't exist
+//       cart = new CreateCart({
+//         _id: userId,
+//         item: [
+//           {
+//             _id: prodId,
+//             name: prodIdExists.name,
+//             quantity: 1,
+//             price: prodIdExists.price,
+//           },
+//         ],
+//         subtotal: prodIdExists.price, // Initial subtotal
+//         discount: subtotal * discountGiven, // discount
+//         tax: (subtotal - discount) * taxGiven, // tax
+//         total: subtotal - discountGiven * tax, // Initial total
+//       });
+//       await cart.save();
+//     } else {
+//       // Check if the product already exists in the cart
+//       const existingItem = cart.item.findIndex(
+//         (item) => item._id.toString() === prodId
+//       );
+
+//       if (existingItem !== -1) {
+//         // If product exists, increase the quantity
+//         const updatedCart = await CreateCart.findOneAndUpdate(
+//           { _id: userId, "item._id": prodId },
+//           {
+//             $inc: { "item.$.quantity": 1 },
+//           },
+//           { new: true }
+//         ).lean();
+
+//         // Recalculate subtotal
+//         const subtotal = updatedCart.item.reduce(
+//           (acc, curr) => acc + curr.price * curr.quantity,
+//           0
+//         );
+//         const total = subtotal - subtotal * discount;
+
+//         await CreateCart.updateOne(
+//           { _id: userId },
+//           { $set: { subtotal, total } }
+//         );
+
+//         console.log("Quantity increased", updatedCart);
+//         cart = await CreateCart.findOne({ _id: userId }).lean();
+//       } else {
+//         // If product doesn't exist, add it to the cart
+//         const pushItem = await CreateCart.findOneAndUpdate(
+//           { _id: userId },
+//           {
+//             $push: {
+//               item: {
+//                 _id: prodId,
+//                 name: prodIdExists.name,
+//                 quantity: 1,
+//                 price: prodIdExists.price,
+//               },
+//             },
+//           },
+//           { new: true }
+//         ).lean();
+
+//         // Recalculate subtotal
+//         const subtotal = pushItem.item.reduce(
+//           (acc, curr) => acc + curr.price * curr.quantity,
+//           0
+//         );
+
+//         await CreateCart.updateOne({ _id: userId }, { $set: { subtotal } });
+
+//         console.log("New item added", pushItem);
+//         cart = await CreateCart.findOne({ _id: userId }).lean();
+//       }
+//     }
+
+//     return res.status(200).json({
+//       message: "Cart updated successfully",
+//       data: cart,
+//     });
+//   } catch (error) {
+//     console.log("Error:", error);
+//     res.status(500).json({ message: "Server error!" });
+//   }
+// }
+
+// module.exports = { cartSystem };
+
 const SignUp = require("../models/authSchema");
 const Products = require("../models/productSchema");
 const { CreateCart } = require("../models/cartSystemSchema");
@@ -106,10 +226,10 @@ const { CreateCart } = require("../models/cartSystemSchema");
 async function cartSystem(req, res) {
   try {
     const { userId, prodId } = req.body;
-    let discount = 0.1;
-    // let tax = 0.18;
+    const discountRate = 0.1; // 10% discount
+    const taxRate = 0.18; // 18% tax
 
-    // Validate user existence
+    // ✅ Validate user existence
     const userIdExists = await SignUp.exists({ _id: userId });
     if (!userIdExists) {
       return res.status(404).json({
@@ -117,7 +237,7 @@ async function cartSystem(req, res) {
       });
     }
 
-    // Validate product existence
+    // ✅ Validate product existence
     const prodIdExists = await Products.findOne({ _id: prodId });
     if (!prodIdExists) {
       return res.status(404).json({ message: "Product does not exist" });
@@ -129,7 +249,12 @@ async function cartSystem(req, res) {
     let cart = await CreateCart.findOne({ _id: userId });
 
     if (!cart) {
-      // Create a new cart if it doesn't exist
+      // ✅ Create a new cart if it doesn't exist
+      const subtotal = prodIdExists.price;
+      const discountAmount = subtotal * discountRate;
+      const taxAmount = (subtotal - discountAmount) * taxRate;
+      const total = subtotal - discountAmount + taxAmount;
+
       cart = new CreateCart({
         _id: userId,
         item: [
@@ -140,44 +265,46 @@ async function cartSystem(req, res) {
             price: prodIdExists.price,
           },
         ],
-        subtotal: prodIdExists.price, // Initial subtotal
-        total: subtotal - subtotal * discount, // Initial total
-        // discount: "10%", // discount
-        // tax: "18% with GST", // tax
+        subtotal,
+        discount: discountAmount,
+        tax: taxAmount,
+        total,
       });
       await cart.save();
     } else {
-      // Check if the product already exists in the cart
+      // ✅ Check if the product already exists in the cart
       const existingItem = cart.item.findIndex(
         (item) => item._id.toString() === prodId
       );
 
       if (existingItem !== -1) {
-        // If product exists, increase the quantity
+        // ✅ If product exists, increase the quantity
         const updatedCart = await CreateCart.findOneAndUpdate(
           { _id: userId, "item._id": prodId },
-          {
-            $inc: { "item.$.quantity": 1 },
-          },
+          { $inc: { "item.$.quantity": 1 } },
           { new: true }
         ).lean();
 
-        // Recalculate subtotal
+        // ✅ Recalculate subtotal, discount, tax, and total
         const subtotal = updatedCart.item.reduce(
           (acc, curr) => acc + curr.price * curr.quantity,
           0
         );
-        const total = subtotal - subtotal * discount;
+        const discountAmount = subtotal * discountRate;
+        const taxAmount = (subtotal - discountAmount) * taxRate;
+        const total = subtotal - discountAmount + taxAmount;
 
         await CreateCart.updateOne(
           { _id: userId },
-          { $set: { subtotal, total } }
+          {
+            $set: { subtotal, discount: discountAmount, tax: taxAmount, total },
+          }
         );
 
         console.log("Quantity increased", updatedCart);
         cart = await CreateCart.findOne({ _id: userId }).lean();
       } else {
-        // If product doesn't exist, add it to the cart
+        // ✅ If product doesn't exist, add it to the cart
         const pushItem = await CreateCart.findOneAndUpdate(
           { _id: userId },
           {
@@ -193,13 +320,21 @@ async function cartSystem(req, res) {
           { new: true }
         ).lean();
 
-        // Recalculate subtotal
+        // ✅ Recalculate subtotal, discount, tax, and total
         const subtotal = pushItem.item.reduce(
           (acc, curr) => acc + curr.price * curr.quantity,
           0
         );
+        const discountAmount = subtotal * discountRate;
+        const taxAmount = (subtotal - discountAmount) * taxRate;
+        const total = subtotal - discountAmount + taxAmount;
 
-        await CreateCart.updateOne({ _id: userId }, { $set: { subtotal } });
+        await CreateCart.updateOne(
+          { _id: userId },
+          {
+            $set: { subtotal, discount: discountAmount, tax: taxAmount, total },
+          }
+        );
 
         console.log("New item added", pushItem);
         cart = await CreateCart.findOne({ _id: userId }).lean();
