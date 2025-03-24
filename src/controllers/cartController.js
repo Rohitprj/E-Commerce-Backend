@@ -106,6 +106,8 @@ const { CreateCart } = require("../models/cartSystemSchema");
 async function cartSystem(req, res) {
   try {
     const { userId, prodId } = req.body;
+    let discount = 0.1;
+    // let tax = 0.18;
 
     // Validate user existence
     const userIdExists = await SignUp.exists({ _id: userId });
@@ -139,7 +141,9 @@ async function cartSystem(req, res) {
           },
         ],
         subtotal: prodIdExists.price, // Initial subtotal
-        total: prodIdExists.price, // Initial subtotal
+        total: subtotal - subtotal * discount, // Initial total
+        // discount: "10%", // discount
+        // tax: "18% with GST", // tax
       });
       await cart.save();
     } else {
@@ -163,10 +167,7 @@ async function cartSystem(req, res) {
           (acc, curr) => acc + curr.price * curr.quantity,
           0
         );
-        const total = updatedCart.item.reduce(
-          (acc, curr) => acc + curr.price * curr.quantity - (acc - 0.1),
-          0
-        );
+        const total = subtotal - subtotal * discount;
 
         await CreateCart.updateOne(
           { _id: userId },
