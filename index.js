@@ -15,7 +15,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:3000",
-      "https://e-commerce-frontend-ecru-eight.vercel.app/",
+      "https://e-commerce-frontend-ecru-eight.vercel.app",
     ],
     credentials: true,
   })
