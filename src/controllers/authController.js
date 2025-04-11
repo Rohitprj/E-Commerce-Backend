@@ -14,7 +14,7 @@ async function signUp(req, res) {
     const accessToken = jwt.sign(
       { email: email, _id: email._id },
       process.env.ACCESS_TOKEN,
-      { expiresIn: "1h" }
+      { expiresIn: "15m" }
     );
     const refreshToken = jwt.sign(
       {
@@ -22,8 +22,9 @@ async function signUp(req, res) {
         _id: email._id,
       },
       process.env.REFRESH_TOKEN,
-      { expiresIn: "14d" }
+      { expiresIn: "7d" }
     );
+
     const newUser = new SignUp({
       email,
       password: hashedPassword,
@@ -32,6 +33,8 @@ async function signUp(req, res) {
     });
     await newUser.save();
 
+    res.cookie("refreshToken", refreshToken);
+    res.json({ accessToken: accessToken });
     res
       .status(201)
       .json({ message: "User registered successfully", data: newUser });
