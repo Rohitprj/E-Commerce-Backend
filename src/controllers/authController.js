@@ -39,6 +39,7 @@ async function signUp(req, res) {
         httpOnly: true,
         secure: "production",
         sameSite: "strict",
+        maxAge: 7 * 24 * 60 * 60 * 1000,
       })
       .json({
         message: "User registered successfully",
@@ -87,15 +88,15 @@ async function logIn(req, res) {
         httpOnly: true,
         secure: "production",
         sameSite: "strict",
-        maxAge: 7,
+        maxAge: 7 * 24 * 60 * 60 * 1000,
       })
       .json({
         message: "Login successfully",
         success: true,
         accessToken,
         user: {
-          _id: user._id,
-          email: user.email,
+          _id: registered._id,
+          email: registered.email,
         },
       });
   } catch (e) {
