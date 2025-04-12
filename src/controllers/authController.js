@@ -87,6 +87,7 @@ async function logIn(req, res) {
         httpOnly: true,
         secure: "production",
         sameSite: "strict",
+        maxAge: 7,
       })
       .json({
         message: "Login successfully",
