@@ -77,12 +77,18 @@ async function logIn(req, res) {
     registered.refreshToken = refreshToken;
     await registered.save();
 
-    res.status(201).json({
-      message: "Login successfully",
-      success: true,
-      accessToken,
-      refreshToken,
-    });
+    res
+      .status(201)
+      .cookie("refreshToken", refreshToken)
+      .json({
+        message: "Login successfully",
+        success: true,
+        accessToken,
+        user: {
+          _id: user._id,
+          email: user.email,
+        },
+      });
   } catch (e) {
     res.status(500).json({ message: "Server error" });
     console.log(e);
