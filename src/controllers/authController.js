@@ -33,11 +33,14 @@ async function signUp(req, res) {
     });
     await newUser.save();
 
-    res.cookie("refreshToken", refreshToken);
-    res.json({ accessToken: accessToken });
     res
       .status(201)
-      .json({ message: "User registered successfully", data: newUser });
+      .cookie("refreshToken", refreshToken)
+      .json({
+        message: "User registered successfully",
+        accessToken,
+        data: { _id: newUser._id, email: newUser.email },
+      });
   } catch (e) {
     console.log(e);
     res.status(500).json({ message: "Server error" });
