@@ -35,7 +35,11 @@ async function signUp(req, res) {
 
     res
       .status(201)
-      .cookie("refreshToken", refreshToken)
+      .cookie("refreshToken", refreshToken, {
+        httpOnly: true,
+        secure: "production",
+        sameSite: "strict",
+      })
       .json({
         message: "User registered successfully",
         accessToken,
@@ -79,7 +83,11 @@ async function logIn(req, res) {
 
     res
       .status(201)
-      .cookie("refreshToken", refreshToken)
+      .cookie("refreshToken", refreshToken, {
+        httpOnly: true,
+        secure: "production",
+        sameSite: "strict",
+      })
       .json({
         message: "Login successfully",
         success: true,
