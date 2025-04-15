@@ -6,7 +6,9 @@ async function signUp(req, res) {
   try {
     const { email, password } = req.body;
 
-    const ipAdd = req.headers["x-forwarded-for"] || req.ip;
+    const ipAdd =
+      req.headers["x-forwarded-for"] ||
+      (req.ip === "::1" ? "127.0.0.1" : req.ip);
     const userAgent = req.headers["user-agent"];
     console.log("IpAddress", ipAdd);
     console.log("Agent", userAgent);
