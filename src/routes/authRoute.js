@@ -4,10 +4,14 @@ const {
   signUpValidation,
   logInValidation,
 } = require("../middleware/authMiddleware");
+const {
+  logInLimiter,
+  signupLimiter,
+} = require("../middleware/authRateLimitMiddleware");
 
 const router = express.Router();
-router.post("/signUp", signUpValidation, signUp);
-router.post("/logIn", logInValidation, logIn);
+router.post("/signUp", signUpValidation, signupLimiter, signUp);
+router.post("/logIn", logInValidation, logInLimiter, logIn);
 
 module.exports = router;
 
