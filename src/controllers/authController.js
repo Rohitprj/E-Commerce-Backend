@@ -68,7 +68,7 @@ async function logIn(req, res) {
     const accessToken = jwt.sign(
       { email: registered.email, _id: registered._id },
       process.env.ACCESS_TOKEN,
-      { expiresIn: "1h" }
+      { expiresIn: "15m" }
     );
     const refreshToken = jwt.sign(
       {
@@ -76,7 +76,7 @@ async function logIn(req, res) {
         _id: registered._id,
       },
       process.env.REFRESH_TOKEN,
-      { expiresIn: "14d" }
+      { expiresIn: "7d" }
     );
 
     registered.refreshToken = refreshToken;
