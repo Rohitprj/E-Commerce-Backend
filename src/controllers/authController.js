@@ -6,6 +6,10 @@ async function signUp(req, res) {
   try {
     const { email, password } = req.body;
 
+    const ipAdd = req.headers["x-forwarded-for"] || req.ip;
+    const userAgent = req.headers["user-agent"];
+    console.log("IpAddress", ipAdd);
+    console.log("Agent", userAgent);
     const existingUser = await SignUp.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ message: "User already exists" });
