@@ -9,9 +9,12 @@ async function signUp(req, res) {
     const ipAdd =
       req.headers["x-forwarded-for"] ||
       (req.ip === "::1" ? "127.0.0.1" : req.ip);
+
     const userAgent = req.headers["user-agent"];
+
     console.log("IpAddress", ipAdd);
     console.log("Agent", userAgent);
+
     const existingUser = await SignUp.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ message: "User already exists" });
@@ -34,8 +37,8 @@ async function signUp(req, res) {
     const newUser = new SignUp({
       email,
       password: hashedPassword,
-      accessToken,
-      refreshToken,
+      IpAddress: ipAdd,
+      UserDevice: userAgent,
     });
     await newUser.save();
 
