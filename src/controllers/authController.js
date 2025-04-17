@@ -20,19 +20,19 @@ async function signUp(req, res) {
       return res.status(400).json({ message: "User already exists" });
     }
     const hashedPassword = await bcrypt.hash(password, 10);
-    const accessToken = jwt.sign(
-      { email: email, _id: email._id },
-      process.env.ACCESS_TOKEN,
-      { expiresIn: "15m" }
-    );
-    const refreshToken = jwt.sign(
-      {
-        email: email,
-        _id: email._id,
-      },
-      process.env.REFRESH_TOKEN,
-      { expiresIn: "7d" }
-    );
+    // const accessToken = jwt.sign(
+    //   { email: email, _id: email._id },
+    //   process.env.ACCESS_TOKEN,
+    //   { expiresIn: "15m" }
+    // );
+    // const refreshToken = jwt.sign(
+    //   {
+    //     email: email,
+    //     _id: email._id,
+    //   },
+    //   process.env.REFRESH_TOKEN,
+    //   { expiresIn: "7d" }
+    // );
 
     const newUser = new SignUp({
       email,
@@ -44,15 +44,15 @@ async function signUp(req, res) {
 
     res
       .status(201)
-      .cookie("refreshToken", refreshToken, {
-        httpOnly: true,
-        secure: "production",
-        sameSite: "strict",
-        maxAge: 7 * 24 * 60 * 60 * 1000,
-      })
+      // .cookie("refreshToken", refreshToken, {
+      //   httpOnly: true,
+      //   secure: "production",
+      //   sameSite: "strict",
+      //   maxAge: 7 * 24 * 60 * 60 * 1000,
+      // })
       .json({
         message: "User registered successfully",
-        accessToken,
+        // accessToken,
         data: { _id: newUser._id, email: newUser.email },
       });
   } catch (e) {
