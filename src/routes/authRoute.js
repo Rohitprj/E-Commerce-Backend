@@ -8,10 +8,28 @@ const {
   logInLimiter,
   signupLimiter,
 } = require("../middleware/authRateLimitMiddleware");
+const jwt = require("jsonwebtoken");
 
 const router = express.Router();
 router.post("/signUp", signUpValidation, signupLimiter, signUp);
 router.post("/logIn", logInValidation, logInLimiter, logIn);
+router.post("tokenRefresh", (req, res) => {
+  const refreshToken = req.cookies.refreshToken;
+  if (!refreshToken) return res.status(401).json({ message: "No token found" });
+  jwt.verify(refreshToken, process.env.REFRESH_TOKEN, (err, decoded) => {
+    if (err) return res.status(403).json({ message: "Invalid Token" });
+
+    const newAccessToken = jwt.sign(
+      { _id: decoded._id, email: decoded.email },
+      process.env.ACCESS_TOKEN,
+      { expiresIn: "15m" }
+    );
+    res.json({
+      accessToken: newAccessToken,
+      user: { _id: decoded._id, email: decoded.email },
+    });
+  });
+});
 
 module.exports = router;
 

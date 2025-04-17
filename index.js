@@ -6,10 +6,13 @@ const productRoute = require("./src/routes/productRoute");
 const cartRoute = require("./src/routes/cartRoute");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
 
 require("dotenv").config();
 
 const app = express();
+app.use(cookieParser());
+
 app.set("trust proxy", true);
 app.use(
   cors({
