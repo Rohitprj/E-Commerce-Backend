@@ -19,6 +19,7 @@ app.use(
     origin: [
       "http://localhost:3000",
       "https://e-commerce-frontend-ecru-eight.vercel.app",
+      "https://www.rohitkumar.site",
     ],
     credentials: true,
   })
