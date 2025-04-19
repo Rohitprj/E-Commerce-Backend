@@ -9,6 +9,7 @@ const {
   signupLimiter,
 } = require("../middleware/authRateLimitMiddleware");
 const jwt = require("jsonwebtoken");
+// const bcrypt = require("bcryptjs");
 
 const router = express.Router();
 router.post("/signUp", signUpValidation, signupLimiter, signUp);
@@ -30,6 +31,38 @@ router.post("/tokenRefresh", (req, res) => {
       user: { _id: decoded._id, email: decoded.email },
     });
   });
+});
+
+router.get("/is_loggedin", (req, res) => {
+  try {
+    const cookies = req.cookies;
+    const cookie = cookies.refreshToken;
+
+    if (!cookie) {
+      return res.json({
+        is_loggedin: false,
+      });
+    }
+
+    console.log({ cookies });
+
+    const data = jwt.verify(cookie, process.env.REFRESH_TOKEN);
+
+    console.log(data);
+
+    res.json({
+      is_loggedin: true,
+      data: {
+        email: data.email,
+        expiry: data.exp,
+      },
+    });
+  } catch (error) {
+    console.log(error);
+    res.send({
+      is_loggedin: false,
+    });
+  }
 });
 
 module.exports = router;
