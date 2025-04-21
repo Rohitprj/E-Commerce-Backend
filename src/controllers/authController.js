@@ -98,7 +98,10 @@ async function logIn(req, res) {
         secure: true,
         sameSite: "none", // frontend and backend must have same domain and subdomain
         maxAge: 7 * 24 * 60 * 60 * 1000,
-        domain: ".rohitkumar.site",
+        domain:
+          process.env.NODE_ENV === "production"
+            ? ".rohitkumar.site"
+            : undefined,
       })
       .json({
         message: "Login successfully",
