@@ -90,28 +90,42 @@ async function logIn(req, res) {
 
     registered.refreshToken = refreshToken;
     await registered.save();
-
-    res
-      .status(201)
-      .cookie("refreshToken", refreshToken, {
-        httpOnly: true,
-        secure: true,
-        sameSite: "none", // frontend and backend must have same domain and subdomain
-        maxAge: 7 * 24 * 60 * 60 * 1000,
-        domain:
-          process.env.NODE_ENV === "production"
-            ? ".rohitkumar.site"
-            : undefined,
-      })
-      .json({
-        message: "Login successfully",
-        success: true,
-        accessToken,
-        user: {
-          _id: registered._id,
-          email: registered.email,
-        },
-      });
+    if (process.env.NODE_ENV === "production") {
+      res
+        .cookie("refreshToken", refreshToken, {
+          httpOnly: true,
+          secure: true,
+          sameSite: "none",
+          domain: ".rohitkumar.site",
+          maxAge: 7 * 24 * 60 * 60 * 1000,
+        })
+        .json({
+          message: "Login successfully",
+          success: true,
+          accessToken,
+          user: {
+            _id: registered._id,
+            email: registered.email,
+          },
+        });
+    } else {
+      res
+        .cookie("refreshToken", refreshToken, {
+          httpOnly: true,
+          secure: false,
+          sameSite: "lax", // lax works fine on localhost
+          maxAge: 7 * 24 * 60 * 60 * 1000,
+        })
+        .json({
+          message: "Login successfully",
+          success: true,
+          accessToken,
+          user: {
+            _id: registered._id,
+            email: registered.email,
+          },
+        });
+    }
   } catch (e) {
     res.status(500).json({ message: "Server error" });
     console.log(e);
