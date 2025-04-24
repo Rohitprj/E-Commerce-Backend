@@ -13,13 +13,14 @@ require("dotenv").config();
 const app = express();
 app.use(cookieParser());
 
-app.set("trust proxy", 1);
+// app.set("trust proxy", 1);
 app.use(
   cors({
     origin: [
       "http://localhost:3000",
       "https://e-commerce-frontend-ecru-eight.vercel.app",
       "https://www.rohitkumar.site",
+      "https://rohitkumar.site",
     ],
     credentials: true,
   })
