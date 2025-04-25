@@ -64,7 +64,7 @@ router.get("/is_loggedin", (req, res) => {
     });
   }
 });
-app.post("/logout", (req, res) => {
+router.post("/logout", (req, res) => {
   try {
     const cookie = req.cookie.refreshToken;
     if (!cookie) {
