@@ -64,7 +64,25 @@ router.get("/is_loggedin", (req, res) => {
     });
   }
 });
+app.post("/logout", (req, res) => {
+  try {
+    const cookie = req.cookie.refreshToken;
+    if (!cookie) {
+      return res.status(204).json({ message: "No refresh token found" });
+    }
+    res.clearCookie("refreshToken", {
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
+      domain: ".rohitkumar.site",
+    });
 
+    return res.status(200).json({ message: "Logged out successfully" });
+  } catch (error) {
+    console.error("Error during logout:", error);
+    res.status(500).json({ message: "Server error" });
+  }
+});
 module.exports = router;
 
 // /**
