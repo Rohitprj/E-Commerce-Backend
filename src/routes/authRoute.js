@@ -67,6 +67,7 @@ router.get("/is_loggedin", (req, res) => {
 router.post("/logout", (req, res) => {
   try {
     const cookie = req.cookie.refreshToken;
+    console.log("Logout cookie", cookie);
     if (!cookie) {
       return res.status(204).json({ message: "No refresh token found" });
     }
