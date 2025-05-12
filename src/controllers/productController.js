@@ -45,20 +45,17 @@ async function addProduct(req, res) {
     if (productId) {
       return res.status(400).json({ message: "Product id exists !" });
     }
-    const addProduct = new Products(
-      {
-        product_id,
-        name,
-        category,
-        image,
-        price,
-        rating,
-        description,
-        brand,
-        stock,
-      },
-      { new: true }
-    );
+    const addProduct = new Products({
+      product_id,
+      name,
+      category,
+      image,
+      price,
+      rating,
+      description,
+      brand,
+      stock,
+    });
     await addProduct.save();
     res.status(201).json({ message: "product addad !", addProduct });
   } catch (error) {
