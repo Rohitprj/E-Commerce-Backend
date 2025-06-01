@@ -1,0 +1,884 @@
+[{
+  "_id": {
+    "$oid": "68245748f411f9c61d7df858"
+  },
+  "product_id": "M101",
+  "name": "Apple iPhone 14 Pro",
+  "category": "Mobile",
+  "image": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fringke.co.in%2Fproducts%2Fbuy-apple-iphone-14-pro-max-back-cover-case-slim-matte-clear&psig=AOvVaw0ZfudpL1kqfVxViCXQk9bC&ust=1746982651618000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCLD2iZ6xmY0DFQAAAAAdAAAAABAQ",
+  "price": 119999,
+  "rating": 4.8,
+  "description": "Apple iPhone 14 Pro with A16 Bionic chip and 48MP camera.",
+  "brand": "Apple",
+  "stock": 11,
+  "features": [
+    "A16 Bionic chip for top-tier performance",
+    "48MP triple-lens camera system",
+    "6.1-inch Super Retina XDR display",
+    "Dynamic Island and Always-On display",
+    "Ceramic Shield front cover"
+  ],
+  "descriptions": [
+    "Premium smartphone designed for power users.",
+    "Delivers advanced photography and videography.",
+    "Supports 5G connectivity for faster downloads.",
+    "Enhanced battery life and MagSafe compatibility."
+  ],
+  "terms_and_services": [
+    "1-year manufacturer warranty included.",
+    "Return policy: 7 days from delivery.",
+    "Free shipping on prepaid orders.",
+    "Customer support available 24/7.",
+    "EMI options available at checkout."
+  ]
+},
+{
+  "_id": {
+    "$oid": "68245748f411f9c61d7df859"
+  },
+  "product_id": "M102",
+  "name": "Samsung Galaxy S23 Ultra",
+  "category": "Mobile",
+  "image": "https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s23-ultra-1.jpg",
+  "price": 124999,
+  "rating": 4.9,
+  "description": "Samsung Galaxy S23 Ultra with Snapdragon 8 Gen 2 and 200MP camera.",
+  "brand": "Samsung",
+  "stock": 10,
+  "features": [
+    "Snapdragon 8 Gen 2 flagship processor",
+    "200MP quad-camera setup",
+    "6.8-inch QHD+ Dynamic AMOLED display",
+    "S Pen support for productivity",
+    "5000mAh battery with fast charging"
+  ],
+  "descriptions": [
+    "Ultimate Android phone for photography and performance.",
+    "Supports 8K video recording and advanced night mode.",
+    "Robust build with Gorilla Glass Victus 2.",
+    "Expandable storage and dual SIM support."
+  ],
+  "terms_and_services": [
+    "1-year Samsung warranty.",
+    "15-day replacement policy.",
+    "Free doorstep delivery.",
+    "24/7 online customer assistance.",
+    "Financing available via select banks."
+  ]
+},
+{
+  "_id": {
+    "$oid": "68245748f411f9c61d7df85a"
+  },
+  "product_id": "F202",
+  "name": "Adidas Ultraboost 22",
+  "category": "Fashion",
+  "image": "https://assets.adidas.com/images/w_600,f_auto,q_auto/Ultraboost_22.jpg",
+  "price": 12999,
+  "rating": 4.7,
+  "description": "Adidas Ultraboost 22 with responsive cushioning and Primeknit upper.",
+  "brand": "Adidas",
+  "stock": 10,
+  "features": [
+    "Responsive Boost midsole for energy return",
+    "Primeknit upper for adaptive fit",
+    "Continental rubber outsole for superior grip",
+    "Lightweight and breathable design",
+    "Supportive heel counter"
+  ],
+  "descriptions": [
+    "Ideal for running and daily wear.",
+    "Provides excellent comfort and support.",
+    "Designed for both men and women.",
+    "Available in multiple colorways."
+  ],
+  "terms_and_services": [
+    "30-day return policy.",
+    "6-month warranty on manufacturing defects.",
+    "Free shipping on orders above ₹5000.",
+    "Customer care available weekdays.",
+    "Easy size exchange process."
+  ]
+},
+{
+  "_id": {
+    "$oid": "68245748f411f9c61d7df85b"
+  },
+  "product_id": "F201",
+  "name": "Nike Air Force 1",
+  "category": "Fashion",
+  "image": "https://static.nike.com/a/images/t_PDP_1280_v1/Nike-Air-Force-1.jpg",
+  "price": 7999,
+  "rating": 4.6,
+  "description": "Classic Nike Air Force 1 sneakers with leather upper and rubber sole.",
+  "brand": "Nike",
+  "stock": 12,
+  "features": [
+    "Iconic low-top design",
+    "Premium leather upper",
+    "Durable rubber outsole",
+    "Perforated toe for breathability",
+    "Classic Air cushioning"
+  ],
+  "descriptions": [
+    "Versatile sneakers suitable for casual and streetwear.",
+    "Timeless style with modern comfort.",
+    "Available in various sizes and colors.",
+    "Easy to clean and maintain."
+  ],
+  "terms_and_services": [
+    "15-day return window.",
+    "1-year warranty against manufacturing defects.",
+    "Free standard delivery.",
+    "Customer support via chat and phone.",
+    "Gift wrapping available on request."
+  ]
+},
+{
+  "_id": {
+    "$oid": "68245748f411f9c61d7df85c"
+  },
+  "product_id": "E302",
+  "name": "Sony WH-1000XM5 Headphones",
+  "category": "Electronics",
+  "image": "https://m.media-amazon.com/images/I/Sony-WH-1000XM5.jpg",
+  "price": 29999,
+  "rating": 4.8,
+  "description": "Sony WH-1000XM5 noise-canceling headphones with Hi-Res audio.",
+  "brand": "Sony",
+  "stock": 10,
+  "features": [
+    "Industry-leading noise cancellation",
+    "Hi-Res audio certification",
+    "Up to 30 hours battery life",
+    "Touch controls for music and calls",
+    "Lightweight and foldable design"
+  ],
+  "descriptions": [
+    "Perfect for travel and office use.",
+    "Crystal clear sound with deep bass.",
+    "Multipoint Bluetooth connectivity.",
+    "Quick charge: 3 hours playback in 3 minutes."
+  ],
+  "terms_and_services": [
+    "1-year Sony warranty.",
+    "7-day replacement policy.",
+    "Free shipping on all orders.",
+    "24/7 technical support.",
+    "No-cost EMI options available."
+  ]
+},
+{
+  "_id": {
+    "$oid": "68245748f411f9c61d7df85d"
+  },
+  "product_id": "E301",
+  "name": "Apple MacBook Pro 14",
+  "category": "Electronics",
+  "image": "https://store.storeimages.cdn-apple.com/MacBook-Pro-14.jpg",
+  "price": 199999,
+  "rating": 4.9,
+  "description": "Apple MacBook Pro 14-inch with M2 Pro chip and 16GB RAM.",
+  "brand": "Apple",
+  "stock": 11,
+  "features": [
+    "M2 Pro chip for blazing-fast performance",
+    "14-inch Liquid Retina XDR display",
+    "16GB unified memory, 512GB SSD",
+    "Up to 18 hours battery life",
+    "Thunderbolt 4 ports and HDMI"
+  ],
+  "descriptions": [
+    "Ideal for creative professionals and developers.",
+    "Ultra-slim, lightweight, and portable.",
+    "Supports macOS Ventura and latest updates.",
+    "Backlit Magic Keyboard and Touch ID."
+  ],
+  "terms_and_services": [
+    "1-year Apple warranty.",
+    "7-day return policy.",
+    "Free shipping and setup assistance.",
+    "AppleCare+ available for extended coverage.",
+    "24/7 Apple support."
+  ]
+},
+{
+  "_id": {
+    "$oid": "68245748f411f9c61d7df85e"
+  },
+  "product_id": "T402",
+  "name": "Hot Wheels Ultimate Garage",
+  "category": "Toys",
+  "image": "https://m.media-amazon.com/images/I/Hot-Wheels-Ultimate-Garage.jpg",
+  "price": 5999,
+  "rating": 4.7,
+  "description": "Hot Wheels Ultimate Garage with multiple tracks and parking spaces.",
+  "brand": "Hot Wheels",
+  "stock": 11,
+  "features": [
+    "Multiple tracks for racing action",
+    "Parking for over 100 cars",
+    "Includes shark attack feature",
+    "Elevator for cars",
+    "Compatible with other Hot Wheels sets"
+  ],
+  "descriptions": [
+    "Perfect for imaginative play and car collections.",
+    "Encourages creativity and motor skills.",
+    "Suitable for ages 5+.",
+    "Easy to assemble and store."
+  ],
+  "terms_and_services": [
+    "15-day return policy.",
+    "6-month warranty on manufacturing defects.",
+    "Free shipping on prepaid orders.",
+    "Customer support for assembly queries.",
+    "Gift wrapping available."
+  ]
+},
+{
+  "_id": {
+    "$oid": "68245748f411f9c61d7df85f"
+  },
+  "product_id": "T401",
+  "name": "Lego Star Wars Millennium Falcon",
+  "category": "Toys",
+  "image": "https://www.lego.com/cdn/cs/set/assets/bltLEGO-Star-Wars-Millennium-Falcon.jpg",
+  "price": 15999,
+  "rating": 4.9,
+  "description": "Lego Star Wars Millennium Falcon building set for kids and collectors.",
+  "brand": "LEGO",
+  "stock": 12,
+  "features": [
+    "Detailed Millennium Falcon model",
+    "Includes minifigures of Star Wars characters",
+    "Over 1,300 pieces for immersive building",
+    "Movable turrets and cockpit",
+    "Collector’s edition packaging"
+  ],
+  "descriptions": [
+    "Ideal for Star Wars fans and LEGO collectors.",
+    "Provides hours of creative building fun.",
+    "Display-worthy once completed.",
+    "Encourages fine motor skills and imagination."
+  ],
+  "terms_and_services": [
+    "30-day return policy.",
+    "1-year warranty on missing parts.",
+    "Free shipping on all orders.",
+    "Customer support for replacement parts.",
+    "Assembly instructions included."
+  ]
+},
+{
+  "_id": {
+    "$oid": "68245748f411f9c61d7df860"
+  },
+  "product_id": "F502",
+  "name": "Wakefit Memory Foam Mattress",
+  "category": "Furniture",
+  "image": "https://www.wakefit.co/media/catalog/product/Wakefit-Memory-Foam-Mattress.jpg",
+  "price": 14999,
+  "rating": 4.8,
+  "description": "Wakefit memory foam mattress with 7-zone support for better sleep.",
+  "brand": "Wakefit",
+  "stock": 11,
+  "features": [
+    "7-zone support for spinal alignment",
+    "High-density memory foam",
+    "Breathable fabric cover",
+    "Anti-sag technology",
+    "Available in multiple sizes"
+  ],
+  "descriptions": [
+    "Designed for restful and comfortable sleep.",
+    "Reduces pressure points and back pain.",
+    "Hypoallergenic and dust mite resistant.",
+    "Easy to unbox and set up."
+  ],
+  "terms_and_services": [
+    "10-year manufacturer warranty.",
+    "100-night risk-free trial.",
+    "Free doorstep delivery.",
+    "Easy returns and refunds.",
+    "Customer support for installation."
+  ]
+},
+{
+  "_id": {
+    "$oid": "68245748f411f9c61d7df861"
+  },
+  "product_id": "F501",
+  "name": "IKEA Markus Office Chair",
+  "category": "Furniture",
+  "image": "https://www.ikea.com/us/en/images/products/MARKUS-office-chair.jpg",
+  "price": 12999,
+  "rating": 4.6,
+  "description": "IKEA Markus ergonomic office chair with adjustable height and lumbar support.",
+  "brand": "IKEA",
+  "stock": 10,
+  "features": [
+    "Ergonomic design with lumbar support",
+    "Adjustable height and tilt",
+    "Breathable mesh backrest",
+    "Sturdy steel frame",
+    "Smooth-rolling casters"
+  ],
+  "descriptions": [
+    "Ideal for long working hours.",
+    "Provides comfort and support.",
+    "Easy to assemble with instructions.",
+    "Modern design fits any office."
+  ],
+  "terms_and_services": [
+    "3-year IKEA warranty.",
+    "15-day return policy.",
+    "Free delivery on select orders.",
+    "Assembly service available.",
+    "Customer support for queries."
+  ]
+},
+{
+  "_id": {
+    "$oid": "68245748f411f9c61d7df862"
+  },
+  "product_id": "M103",
+  "name": "Google Pixel 7 Pro",
+  "category": "Mobile",
+  "image": "https://store.google.com/product/images/phone_pixel_7_pro.jpg",
+  "price": 84999,
+  "rating": 4.7,
+  "description": "Google Pixel 7 Pro with Google Tensor G2 chip and advanced camera features.",
+  "brand": "Google",
+  "stock": 15,
+  "features": [
+    "Google Tensor G2 processor",
+    "Triple rear camera with advanced AI",
+    "6.7-inch LTPO OLED display",
+    "Face Unlock and in-display fingerprint",
+    "All-day adaptive battery"
+  ],
+  "descriptions": [
+    "Flagship Android phone with pure Google experience.",
+    "Stunning photos in all lighting conditions.",
+    "Water and dust resistant build.",
+    "Regular software and security updates."
+  ],
+  "terms_and_services": [
+    "1-year Google warranty.",
+    "7-day return policy.",
+    "Free shipping on all orders.",
+    "24/7 customer care.",
+    "EMI and financing options available."
+  ]
+},
+{
+  "_id": {
+    "$oid": "68245748f411f9c61d7df863"
+  },
+  "product_id": "M104",
+  "name": "OnePlus 11 5G",
+  "category": "Mobile",
+  "image": "https://image01.oneplus.net/ebp/202301/10/1-m00-1c-0b-rb8bw2p6xg2adn1vaakxqg1u6e0480_840_840.png",
+  "price": 61999,
+  "rating": 4.6,
+  "description": "OnePlus 11 5G with Snapdragon 8 Gen 2 and 100W fast charging.",
+  "brand": "OnePlus",
+  "stock": 20,
+  "features": [
+    "Snapdragon 8 Gen 2 flagship processor",
+    "120Hz AMOLED display",
+    "100W SUPERVOOC fast charging",
+    "Triple camera system with Hasselblad tuning",
+    "Dual stereo speakers"
+  ],
+  "descriptions": [
+    "Smooth performance for gaming and multitasking.",
+    "Ultra-fast charging for all-day use.",
+    "Sleek and premium design.",
+    "OxygenOS for a clean Android experience."
+  ],
+  "terms_and_services": [
+    "1-year OnePlus warranty.",
+    "10-day replacement policy.",
+    "Free shipping on prepaid orders.",
+    "Customer support via app and hotline.",
+    "No-cost EMI available."
+  ]
+},
+{
+  "_id": {
+    "$oid": "68245748f411f9c61d7df864"
+  },
+  "product_id": "F203",
+  "name": "Puma RS-X3 Puzzle",
+  "category": "Fashion",
+  "image": "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa/global/371570/01/sv01/fnd/IND/fmt/png",
+  "price": 8999,
+  "rating": 4.5,
+  "description": "Puma RS-X3 Puzzle sneakers with bold design and comfortable fit.",
+  "brand": "Puma",
+  "stock": 18,
+  "features": [
+    "Chunky retro-inspired design",
+    "Mesh and textile upper",
+    "Lightweight EVA midsole",
+    "Rubber outsole for grip",
+    "Bold color-blocking"
+  ],
+  "descriptions": [
+    "Trendy sneakers for casual and sporty looks.",
+    "Cushioned for all-day comfort.",
+    "Unisex design in multiple sizes.",
+    "Easy to clean and maintain."
+  ],
+  "terms_and_services": [
+    "15-day return policy.",
+    "6-month warranty on manufacturing defects.",
+    "Free shipping on orders above ₹2000.",
+    "Customer support via email and phone.",
+    "Gift option available."
+  ]
+},
+{
+  "_id": {
+    "$oid": "68245748f411f9c61d7df865"
+  },
+  "product_id": "F204",
+  "name": "Reebok Nano X1",
+  "category": "Fashion",
+  "image": "https://assets.reebok.com/images/w_600,f_auto,q_auto/reebok-nano-x1.jpg",
+  "price": 7499,
+  "rating": 4.4,
+  "description": "Reebok Nano X1 training shoes with Flexweave knit upper.",
+  "brand": "Reebok",
+  "stock": 14,
+  "features": [
+    "Flexweave knit upper for durability",
+    "Floatride Energy Foam cushioning",
+    "Wide toe box for stability",
+    "Rubber outsole for traction",
+    "Lightweight and flexible"
+  ],
+  "descriptions": [
+    "Perfect for cross-training and gym workouts.",
+    "Breathable and supportive fit.",
+    "Available in various colors.",
+    "Designed for both men and women."
+  ],
+  "terms_and_services": [
+    "30-day return policy.",
+    "1-year warranty on manufacturing defects.",
+    "Free shipping on select orders.",
+    "Customer care available weekdays.",
+    "Easy size exchange."
+  ]
+},
+{
+  "_id": {
+    "$oid": "68245748f411f9c61d7df866"
+  },
+  "product_id": "E303",
+  "name": "Bose QuietComfort 45",
+  "category": "Electronics",
+  "image": "https://assets.bose.com/content/dam/Bose_DAM/Web/consumer_electronics/global/products/headphones/quietcomfort_45/product_silo_images/qc45_black_EC_hero.psd/jcr:content/renditions/cq5dam.web.320.320.png",
+  "price": 32999,
+  "rating": 4.8,
+  "description": "Bose QuietComfort 45 headphones with world-class noise cancellation.",
+  "brand": "Bose",
+  "stock": 12,
+  "features": [
+    "Acoustic Noise Cancelling technology",
+    "Up to 24 hours battery life",
+    "Lightweight and comfortable fit",
+    "Aware Mode for ambient sound",
+    "USB-C fast charging"
+  ],
+  "descriptions": [
+    "Ideal for travel, work, and relaxation.",
+    "Crystal-clear sound and deep bass.",
+    "Bluetooth multipoint connectivity.",
+    "Foldable for easy storage."
+  ],
+  "terms_and_services": [
+    "1-year Bose warranty.",
+    "7-day replacement policy.",
+    "Free shipping on all orders.",
+    "24/7 customer support.",
+    "EMI options available."
+  ]
+},
+{
+  "_id": {
+    "$oid": "68245748f411f9c61d7df867"
+  },
+  "product_id": "E304",
+  "name": "Dell XPS 13 Laptop",
+  "category": "Electronics",
+  "image": "https://i.dell.com/sites/imagecontent/products/PublishingImages/xps-13-9310-laptop/spi/ng/xps-13-9310-laptop-spi-ng-500x500.jpg",
+  "price": 139999,
+  "rating": 4.7,
+  "description": "Dell XPS 13 with 11th Gen Intel Core processor and InfinityEdge display.",
+  "brand": "Dell",
+  "stock": 10,
+  "features": [
+    "11th Gen Intel Core i7 processor",
+    "13.4-inch FHD+ InfinityEdge display",
+    "16GB RAM, 512GB SSD storage",
+    "Ultra-lightweight and portable",
+    "Long battery life"
+  ],
+  "descriptions": [
+    "Perfect for professionals and students.",
+    "Stunning visuals and edge-to-edge display.",
+    "Premium aluminum and carbon fiber build.",
+    "Windows 11 pre-installed."
+  ],
+  "terms_and_services": [
+    "1-year Dell onsite warranty.",
+    "7-day return policy.",
+    "Free delivery and setup assistance.",
+    "Customer support via chat and phone.",
+    "EMI and financing available."
+  ]
+},
+{
+  "_id": {
+    "$oid": "68245748f411f9c61d7df868"
+  },
+  "product_id": "T403",
+  "name": "Barbie Dreamhouse",
+  "category": "Toys",
+  "image": "https://m.media-amazon.com/images/I/81Zt42ioCgL._AC_SL1500_.jpg",
+  "price": 9999,
+  "rating": 4.6,
+  "description": "Barbie Dreamhouse with 3 stories, 8 rooms, and a working elevator.",
+  "brand": "Barbie",
+  "stock": 9,
+  "features": [
+    "Three-story house with 8 rooms",
+    "Working elevator and pool",
+    "Comes with over 70 accessories",
+    "Lights and sounds for realistic play",
+    "Fits multiple Barbie dolls"
+  ],
+  "descriptions": [
+    "Encourages imaginative and social play.",
+    "Large and sturdy for group fun.",
+    "Easy to assemble and store.",
+    "Ideal for ages 3 and up."
+  ],
+  "terms_and_services": [
+    "15-day return policy.",
+    "6-month warranty on manufacturing defects.",
+    "Free shipping on prepaid orders.",
+    "Customer support for assembly help.",
+    "Gift wrapping available."
+  ]
+},
+{
+  "_id": {
+    "$oid": "68245748f411f9c61d7df869"
+  },
+  "product_id": "T404",
+  "name": "NERF Elite 2.0 Shockwave RD-15",
+  "category": "Toys",
+  "image": "https://m.media-amazon.com/images/I/81x+3Z5bGkL._AC_SL1500_.jpg",
+  "price": 2999,
+  "rating": 4.5,
+  "description": "NERF Elite 2.0 Shockwave RD-15 blaster with pump-action priming.",
+  "brand": "NERF",
+  "stock": 16,
+  "features": [
+    "Pump-action priming for rapid fire",
+    "15-dart rotating drum",
+    "Customizable with tactical rails",
+    "Includes 30 official NERF darts",
+    "Durable plastic construction"
+  ],
+  "descriptions": [
+    "Safe and fun for indoor and outdoor play.",
+    "Easy to load and use for kids.",
+    "Bright colors for high visibility.",
+    "Recommended for ages 8+."
+  ],
+  "terms_and_services": [
+    "7-day return policy.",
+    "6-month warranty on manufacturing defects.",
+    "Free shipping on orders above ₹1000.",
+    "Customer care for replacement darts.",
+    "Gift packaging available."
+  ]
+},
+{
+  "_id": {
+    "$oid": "68245748f411f9c61d7df86a"
+  },
+  "product_id": "F503",
+  "name": "Godrej Interio Engineered Wood Bed",
+  "category": "Furniture",
+  "image": "https://www.godrejinterio.com/imagestore/Beds/engineered-wood-bed.jpg",
+  "price": 18999,
+  "rating": 4.3,
+  "description": "Godrej Interio engineered wood bed with storage drawers.",
+  "brand": "Godrej Interio",
+  "stock": 7,
+  "features": [
+    "Engineered wood construction",
+    "Ample under-bed storage drawers",
+    "Modern and elegant design",
+    "Easy to assemble",
+    "Durable and termite-resistant"
+  ],
+  "descriptions": [
+    "Ideal for bedrooms with space constraints.",
+    "Blends well with modern interiors.",
+    "Smooth finish and sturdy build.",
+    "Available in different sizes."
+  ],
+  "terms_and_services": [
+    "3-year manufacturer warranty.",
+    "15-day return policy.",
+    "Free delivery and installation.",
+    "Customer support for assembly.",
+    "Easy EMI options."
+  ]
+},
+{
+  "_id": {
+    "$oid": "68245748f411f9c61d7df86b"
+  },
+  "product_id": "F504",
+  "name": "Urban Ladder Recliner Sofa",
+  "category": "Furniture",
+  "image": "https://www.urbanladder.com/images/products/recliner-sofa.jpg",
+  "price": 25999,
+  "rating": 4.5,
+  "description": "Urban Ladder single-seater recliner sofa with plush cushioning.",
+  "brand": "Urban Ladder",
+  "stock": 5,
+  "features": [
+    "Single-seater with manual recline",
+    "Plush cushioning for comfort",
+    "Premium fabric upholstery",
+    "Sturdy wooden frame",
+    "Easy-to-clean surface"
+  ],
+  "descriptions": [
+    "Perfect for living rooms and home theaters.",
+    "Provides superior comfort and support.",
+    "Compact design fits small spaces.",
+    "Available in multiple colors."
+  ],
+  "terms_and_services": [
+    "1-year warranty on frame and mechanism.",
+    "10-day return policy.",
+    "Free delivery and installation.",
+    "Customer support for after-sales service.",
+    "Easy EMI available."
+  ]
+},
+{
+  "_id": {
+    "$oid": "68245748f411f9c61d7df86c"
+  },
+  "product_id": "M105",
+  "name": "Xiaomi 13 Pro",
+  "category": "Mobile",
+  "image": "https://i01.appmifile.com/webfile/globalimg/products/pc/xiaomi-13-pro.jpg",
+  "price": 79999,
+  "rating": 4.6,
+  "description": "Xiaomi 13 Pro with Snapdragon 8 Gen 2 and Leica optics.",
+  "brand": "Xiaomi",
+  "stock": 13,
+  "features": [
+    "Snapdragon 8 Gen 2 processor",
+    "Leica triple camera system",
+    "120Hz AMOLED display",
+    "120W HyperCharge fast charging",
+    "Premium ceramic back"
+  ],
+  "descriptions": [
+    "Flagship phone for photography enthusiasts.",
+    "Smooth performance for gaming and multitasking.",
+    "Elegant and durable build.",
+    "Supports 5G and Wi-Fi 6E."
+  ],
+  "terms_and_services": [
+    "1-year Xiaomi warranty.",
+    "7-day replacement policy.",
+    "Free shipping on prepaid orders.",
+    "24/7 customer support.",
+    "EMI and exchange offers available."
+  ]
+},
+{
+  "_id": {
+    "$oid": "68245748f411f9c61d7df86d"
+  },
+  "product_id": "F205",
+  "name": "Under Armour HOVR Phantom 2",
+  "category": "Fashion",
+  "image": "https://underarmour.scene7.com/is/image/Underarmour/3024155-001_DEFAULT?wid=600&hei=600",
+  "price": 10499,
+  "rating": 4.5,
+  "description": "Under Armour HOVR Phantom 2 running shoes with UA HOVR cushioning.",
+  "brand": "Under Armour",
+  "stock": 11,
+  "features": [
+    "UA HOVR cushioning for energy return",
+    "Soft knit upper for breathability",
+    "External heel counter for stability",
+    "Durable rubber outsole",
+    "Sock-like fit"
+  ],
+  "descriptions": [
+    "Ideal for runners and athletes.",
+    "Provides comfort and support on long runs.",
+    "Modern design with bold colors.",
+    "Easy to slip on and off."
+  ],
+  "terms_and_services": [
+    "30-day return policy.",
+    "6-month warranty on manufacturing defects.",
+    "Free shipping on select orders.",
+    "Customer care for size exchanges.",
+    "Gift packaging available."
+  ]
+},
+{
+  "_id": {
+    "$oid": "68245748f411f9c61d7df86e"
+  },
+  "product_id": "E305",
+  "name": "HP Envy x360 Convertible",
+  "category": "Electronics",
+  "image": "https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c06642268.png",
+  "price": 94999,
+  "rating": 4.6,
+  "description": "HP Envy x360 convertible laptop with AMD Ryzen processor.",
+  "brand": "HP",
+  "stock": 8,
+  "features": [
+    "AMD Ryzen 7 processor",
+    "360-degree hinge for tablet mode",
+    "13.3-inch FHD touchscreen",
+    "8GB RAM, 512GB SSD",
+    "Backlit keyboard"
+  ],
+  "descriptions": [
+    "Versatile for work, study, and entertainment.",
+    "Lightweight and portable design.",
+    "Long battery life for all-day use.",
+    "Windows 11 pre-installed."
+  ],
+  "terms_and_services": [
+    "1-year HP onsite warranty.",
+    "7-day return policy.",
+    "Free shipping and setup.",
+    "Customer support via chat and phone.",
+    "EMI and exchange offers available."
+  ]
+},
+{
+  "_id": {
+    "$oid": "68245748f411f9c61d7df86f"
+  },
+  "product_id": "T405",
+  "name": "Fisher-Price Laugh & Learn Smart Stages Chair",
+  "category": "Toys",
+  "image": "https://m.media-amazon.com/images/I/81p+u4c9ZUL._AC_SL1500_.jpg",
+  "price": 3499,
+  "rating": 4.7,
+  "description": "Interactive chair with songs, phrases, and learning content.",
+  "brand": "Fisher-Price",
+  "stock": 10,
+  "features": [
+    "Interactive learning chair",
+    "Smart Stages technology for age-appropriate content",
+    "Plays songs and phrases",
+    "Light-up remote and flip book",
+    "Sturdy and safe for toddlers"
+  ],
+  "descriptions": [
+    "Encourages learning through play.",
+    "Suitable for ages 1 to 3 years.",
+    "Easy to clean and assemble.",
+    "Promotes motor skills and language development."
+  ],
+  "terms_and_services": [
+    "15-day return policy.",
+    "6-month warranty on manufacturing defects.",
+    "Free shipping on prepaid orders.",
+    "Customer support for queries.",
+    "Gift wrapping available."
+  ]
+},
+{
+  "_id": {
+    "$oid": "68245748f411f9c61d7df870"
+  },
+  "product_id": "F505",
+  "name": "Nilkamal Plastic Chair Set",
+  "category": "Furniture",
+  "image": "https://www.nilkamalfurniture.com/media/catalog/product/n/i/nilkamal-plastic-chair-set.jpg",
+  "price": 2999,
+  "rating": 4.2,
+  "description": "Set of 2 durable plastic chairs suitable for indoor and outdoor use.",
+  "brand": "Nilkamal",
+  "stock": 20,
+  "features": [
+    "Set of 2 stackable plastic chairs",
+    "Weather-resistant material",
+    "Lightweight and easy to move",
+    "Ergonomic design for comfort",
+    "Available in multiple colors"
+  ],
+  "descriptions": [
+    "Ideal for gardens, balconies, and patios.",
+    "Easy to clean and maintain.",
+    "Durable and long-lasting.",
+    "No assembly required."
+  ],
+  "terms_and_services": [
+    "1-year manufacturer warranty.",
+    "7-day return policy.",
+    "Free shipping on select orders.",
+    "Customer support for queries.",
+    "Bulk purchase discounts available."
+  ]
+},
+{
+  "_id": {
+    "$oid": "68245748f411f9c61d7df871"
+  },
+  "product_id": "M106",
+  "name": "Realme GT Neo 3",
+  "category": "Mobile",
+  "image": "https://image01.realme.net/general/20220323/1648028888.jpg",
+  "price": 36999,
+  "rating": 4.4,
+  "description": "Realme GT Neo 3 with 150W UltraDart Charge and MediaTek Dimensity 8100.",
+  "brand": "Realme",
+  "stock": 17,
+  "features": [
+    "MediaTek Dimensity 8100 processor",
+    "150W UltraDart fast charging",
+    "120Hz AMOLED display",
+    "Triple camera setup",
+    "Vapor chamber cooling"
+  ],
+  "descriptions": [
+    "High-performance phone for gaming and multitasking.",
+    "Ultra-fast charging for minimal downtime.",
+    "Sleek and stylish design.",
+    "5G connectivity and expandable storage."
+  ],
+  "terms_and_services": [
+    "1-year Realme warranty.",
+    "10-day replacement policy.",
+    "Free shipping on prepaid orders.",
+    "24/7 customer support.",
+    "No-cost EMI available."
+  ]
+}]
