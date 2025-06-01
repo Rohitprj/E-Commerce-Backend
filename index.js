@@ -4,6 +4,7 @@ const authRoute = require("./src/routes/authRoute");
 const categoriesRoute = require("./src/routes/categoriesRoute");
 const productRoute = require("./src/routes/productRoute");
 const cartRoute = require("./src/routes/cartRoute");
+const wishlistRoute = require("./src/routes/wishlistRoute");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
@@ -38,9 +39,13 @@ app.use("/auth", authRoute);
 app.use("/categories", categoriesRoute);
 app.use("/product", productRoute);
 app.use("/cart", cartRoute);
+app.use("/wishlist", wishlistRoute);
 
+app.use("/", (req, res) => {
+  res.send("Server is running");
+});
 app.listen(PORT, () => {
-  console.log(`Server is running on the port ${PORT}`);
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
 
 // const express = require("express");
