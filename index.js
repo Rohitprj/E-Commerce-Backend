@@ -41,8 +41,11 @@ app.use("/product", productRoute);
 app.use("/cart", cartRoute);
 app.use("/wishlist", wishlistRoute);
 
+app.use("/", (req, res) => {
+  res.send("Server is running");
+});
 app.listen(PORT, () => {
-  console.log(`Server is running on the port ${PORT}`);
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
 
 // const express = require("express");
