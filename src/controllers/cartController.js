@@ -229,7 +229,7 @@ async function cartSystem(req, res) {
     const discountRate = 0.1; // 10% discount
     const taxRate = 0.18; // 18% tax
 
-    // ✅ Validate user existence
+    // Validate user existence
     const userIdExists = await SignUp.exists({ _id: userId });
     if (!userIdExists) {
       return res.status(404).json({
@@ -237,7 +237,7 @@ async function cartSystem(req, res) {
       });
     }
 
-    // ✅ Validate product existence
+    //  Validate product existence
     const prodIdExists = await Products.findOne({ _id: prodId });
     if (!prodIdExists) {
       return res.status(404).json({ message: "Product does not exist" });
@@ -249,7 +249,7 @@ async function cartSystem(req, res) {
     let cart = await CreateCart.findOne({ _id: userId });
 
     if (!cart) {
-      // ✅ Create a new cart if it doesn't exist
+      // Create a new cart if it doesn't exist
       const subtotal = prodIdExists.price;
       const discountAmount = subtotal * discountRate;
       const taxAmount = (subtotal - discountAmount) * taxRate;
@@ -272,20 +272,20 @@ async function cartSystem(req, res) {
       });
       await cart.save();
     } else {
-      // ✅ Check if the product already exists in the cart
+      // Check if the product already exists in the cart
       const existingItem = cart.item.findIndex(
         (item) => item._id.toString() === prodId
       );
 
       if (existingItem !== -1) {
-        // ✅ If product exists, increase the quantity
+        // If product exists, increase the quantity
         const updatedCart = await CreateCart.findOneAndUpdate(
           { _id: userId, "item._id": prodId },
           { $inc: { "item.$.quantity": 1 } },
           { new: true }
         ).lean();
 
-        // ✅ Recalculate subtotal, discount, tax, and total
+        // Recalculate subtotal, discount, tax, and total
         const subtotal = updatedCart.item.reduce(
           (acc, curr) => acc + curr.price * curr.quantity,
           0
@@ -304,7 +304,7 @@ async function cartSystem(req, res) {
         console.log("Quantity increased", updatedCart);
         cart = await CreateCart.findOne({ _id: userId }).lean();
       } else {
-        // ✅ If product doesn't exist, add it to the cart
+        // If product doesn't exist, add it to the cart
         const pushItem = await CreateCart.findOneAndUpdate(
           { _id: userId },
           {
@@ -320,7 +320,7 @@ async function cartSystem(req, res) {
           { new: true }
         ).lean();
 
-        // ✅ Recalculate subtotal, discount, tax, and total
+        // Recalculate subtotal, discount, tax, and total
         const subtotal = pushItem.item.reduce(
           (acc, curr) => acc + curr.price * curr.quantity,
           0
