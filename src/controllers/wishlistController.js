@@ -1,3 +1,5 @@
+const mongoose = require("mongoose");
+const { Types, Schema } = mongoose;
 const SignUp = require("../models/authSchema");
 const Products = require("../models/productSchema");
 const Wishlist = require("../models/wishlist");
@@ -111,22 +113,44 @@ async function addToWishlist(req, res) {
 }
 
 // Get Wishlist Data
+
 async function getWishlistData(req, res) {
   const { userId } = req.params;
-
   try {
-    const wishlist = await Wishlist.findOne({ userId }).populate("products");
-
+    if (!Types.ObjectId.isValid(userId)) {
+      return res
+        .status(400)
+        .json({ success: false, message: "Invalid userId" });
+    }
+    const wishlist = await Wishlist.findOne({
+      userId: new Types.ObjectId(userId),
+    });
     if (!wishlist) {
       return res.status(200).json({ success: true, products: [] });
     }
-
-    res.status(200).json({ success: true, products: wishlist.products });
+    res.status(200).json({ success: true, products: wishlist.productId });
   } catch (error) {
     console.error("Error fetching wishlist:", error);
     res.status(500).json({ success: false, message: "Server error" });
   }
 }
+// async function getWishlistData(req, res) {
+//   const { userId } = req.params;
+//   try {
+//     console.log("UserId", userId);
+//     const wishlist = await Wishlist.findOne({
+//       userId: new Types.ObjectId(userId),
+//     });
+//     console.log("Wishlist", wishlist);
+//     if (!wishlist) {
+//       return res.status(200).json({ success: true, products: [] });
+//     }
+//     res.status(200).json({ success: true, products: wishlist.productId });
+//   } catch (error) {
+//     console.error("Error fetching wishlist:", error);
+//     res.status(500).json({ success: false, message: "Server error" });
+//   }
+// }
 
 // Remove from Wishlist
 async function removeFromWishlist(req, res) {
@@ -153,20 +177,6 @@ async function removeFromWishlist(req, res) {
   }
 }
 // COPILOT'S LOGIC
-
-// async function getWishlistData(req, res) {
-//   const { userId } = req.params;
-//   try {
-//     const wishlist = await Wishlist.findOne({ userId });
-//     if (!wishlist) {
-//       return res.status(200).json({ success: true, products: [] });
-//     }
-//     res.status(200).json({ success: true, products: wishlist.productId });
-//   } catch (error) {
-//     console.error("Error fetching wishlist:", error);
-//     res.status(500).json({ success: false, message: "Server error" });
-//   }
-// }
 
 // async function removeFromWishlist(req, res) {
 //   const { userId, productId } = req.body;

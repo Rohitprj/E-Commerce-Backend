@@ -7,7 +7,7 @@ const {
 const router = require("express").Router();
 
 router.post("/addToWishlist", addToWishlist);
-router.get("/getWishlistData/:id", getWishlistData);
+router.get("/getWishlistData/:userId", getWishlistData);
 router.delete("/removeFromWishlist", removeFromWishlist);
 
 module.exports = router;
