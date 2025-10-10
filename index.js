@@ -42,7 +42,7 @@ app.use("/cart", cartRoute);
 app.use("/wishlist", wishlistRoute);
 
 app.use("/", (req, res) => {
-  res.send("Server is running on ubantu");
+  res.send("Server is running on Ubantu OS");
 });
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
